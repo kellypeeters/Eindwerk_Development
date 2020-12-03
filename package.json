@@ -1,0 +1,23 @@
+{
+  "name": "eindwerk_development",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kellypeeters/Eindwerk_Development.git"
+  },
+  "author": "Kelly Peeters",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kellypeeters/Eindwerk_Development/issues"
+  },
+  "homepage": "https://github.com/kellypeeters/Eindwerk_Development#readme",
+  "dependencies": {
+    "node": "^15.3.0"
+  }
+}
