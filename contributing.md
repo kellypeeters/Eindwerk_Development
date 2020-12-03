@@ -3,6 +3,7 @@
 ---
 
 //intro
+Verwijs ook naar code of conduct
 
 ## Report bugs
 * Open a ticket in Github
@@ -22,13 +23,16 @@ npm version:
 * Open a feature request on github
 * Declare why usefull
 
-## Feature requests
-
 ## Guidlines for development
 
 // explain how to setup the system for development
+env file adaption
+* DB dev
+* VERBOSE
+
 
 ## Logging
+
 ```
 expected log levels:
 
@@ -42,8 +46,8 @@ expected log levels:
 ## Setup for development
 
 ## Roadmap and vision
-//mention van een forum
+//Mention van een forum
 //Discord
 
 ## Get in touch
-//Waar ze moeten sturen
+peeters.kelly@outlook.com
