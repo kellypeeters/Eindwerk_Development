@@ -19,12 +19,13 @@
   "homepage": "https://github.com/kellypeeters/Eindwerk_Development#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "jest": "^26.6.3",
     "node": "^15.3.0"
   },
- "jest": {
- "testPathIgnorePatterns": [
- "/src/__tests__/integration/",
- "/node_modules/"
- ]
- }
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/src/__tests__/integration/",
+      "/node_modules/"
+    ]
+  }
 }
