@@ -64,10 +64,11 @@ async function initialiseTables() {
       await pg.schema
         .createTable('vragen', (table) => {
           table.increments();
-          table.uuid('uuid');
-          table.string('content');
-          table.string('categorie_id');
-          table.integer('order');
+          table.string('categoriesoort');
+          table.string('voornaam');
+          table.string('achternaam');
+          table.string('email');
+          table.string('bericht');
           table.timestamps(true, true);
         })
         .then(async () => {
@@ -81,7 +82,6 @@ async function initialiseTables() {
       await pg.schema
         .createTable('categorie', (table) => {
           table.increments();
-          table.uuid('uuid');
           table.string('categoriesoort');
           table.string('summary');
           table.timestamps(true, true);
@@ -97,6 +97,42 @@ async function initialiseTables() {
     }
   });
 }
+
+app.post('/post', async (req, res) => {
+
+  const selected_index = form.elements["onderwerp"].selectedIndex;
+  const voornaam = document.getElementsById('fname').value;
+  const achternaam = document.getElementsById('lname').value;
+  const email = document.getElementsById('email').value;
+  const onderwerp = document.getElementsById('onderwerp').value;
+  const subject = document.getElementsById('subject').value;
+
+  if(selected_index.value == "technisch"){
+    alert("jeej");
+  }
+  /*{
+     const selected_option_value = Form.elements["onderwerp"].options[selected_index].value;
+     const selected_option_text = Form.elements["onderwerp"].options[selected_index].text;
+  }
+  else
+  {
+     alert('Selecteer een onderwerp uit de lijst');
+  }*/
+
+   client.query(
+    'INSERT INTO categorie (categoriesoort, voornaam, achternaam, email, bericht) VALUES ($1, $2, $3, $4, $5)',
+    [categorie_id, voornaam, achternaam, email, bericht],
+    (error) => {
+      if (error) {
+        throw error
+      }
+      console.log(categorie_id, voornaam, achternaam, email, bericht);
+      res.status(201).json({status: 'success', message: 'Insert in categorie goed gelukt'})
+    },
+  )
+}) 
+
+
 initialiseTables()
 
 module.exports = app;
