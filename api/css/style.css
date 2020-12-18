@@ -28,11 +28,11 @@ form{
 	position: relative;	
 }
 
-label, input, textarea{
+label, input, textarea, select{
 	display: block;	
 }
 
-input, textarea{
+input, textarea, select{
 	width: 90%;	
 	border-color:  #89cff0;
 	border-radius: 17px;
@@ -42,7 +42,7 @@ input, textarea{
 	border: solid 3px #98d4f3;	
 }
 
-input:focus, textarea:focus{
+input:focus, textarea:focus, select:focus{
 	border: solid 3px #77bde0;	
 }
 
@@ -50,6 +50,11 @@ textarea{
 	height: 100px;	
 	resize: none; 
 	overflow: auto;
+}
+
+select{
+	width: 96%;	
+	color:black;
 }
 
 input[type="submit"]{
