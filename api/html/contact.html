@@ -22,13 +22,21 @@
           <label for="lname">Achternaam</label>
           <input type="text" id="lname" name="lastname" placeholder="Achternaam">
 
-          <label for="lemail">Achternaam</label>
+          <label for="lemail">Email</label>
           <input type="text" id="email" name="email" placeholder="Email">
+
+          <label for="onderwerp">Selecteer het onderwerp</label>
+          <select id="onderwerp" name="onderwerp">
+          <option value="" disabled selected>Selecteer het onderwerp</option>
+          <option value="technisch">Technische vraag</option>
+          <option value="probleem">Probleem</option>
+          <option value="dankwoord">Dankwoord</option>
+          </select>
       
           <label for="subject">Bericht</label>
-          <textarea id="subject" name="subject" placeholder="Je vraag" style="height:200px"></textarea>
+          <textarea id="subject" name="subject" placeholder="Schrijf hier je bericht" style="height:200px"></textarea>
       
-          <input type="submit" value="Verstuur">
+          <input type="submit" id="btnInsert" value="Verstuur">
       
         </form>
       </div>
@@ -42,15 +50,18 @@
 
 <footer>
   <a href="https://www.linkedin.com/in/kelly-peeters-b0114a172/"  target="_blank">
-  <img class="SocialMedia" src="./../../Foto's/linkedin-3-24.png" alt="Linkedin">
+  <img class="SocialMedia" src="./../Foto's/linkedin-3-24.png" alt="Linkedin">
 </a>
 <a href="https://www.instagram.com/peeterskelly/"  target="_blank">
-  <img class="SocialMedia" src="./../../Foto's/facebook-3-24.png" alt="Facebook">
+  <img class="SocialMedia" src="./../Foto's/facebook-3-24.png" alt="Facebook">
   </a>
   <a href="https://www.facebook.com/kelly.peeters.79/"  target="_blank">
-      <img class="SocialMedia" src="./../../Foto's/Instagram-3-24.png" alt="Instagram">
+      <img class="SocialMedia" src="./../Foto's/Instagram-3-24.png" alt="Instagram">
   </a>
   <p>Gemaakt door Kelly Peeters</p>
 </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="contact.js"></script>
+<script type="text/javascript" src="./../src/server.js"></script>
 </body>
 </html>

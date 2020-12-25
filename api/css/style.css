@@ -1,7 +1,11 @@
 .StartTekst{
  position: absolute; 
  text-align: center;
- background-color:  #89cff0;
+ background-image: url("./../Foto\'s/cover.png");
+ background-size: 85%;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-color:  #FF931E;
  height: 80%; 
  width: 91%; 
  transform: translate3d(0px, 0px, 0px) scale(1.1, 1.1); 
@@ -28,11 +32,11 @@ form{
 	position: relative;	
 }
 
-label, input, textarea{
+label, input, textarea, select{
 	display: block;	
 }
 
-input, textarea{
+input, textarea, select{
 	width: 90%;	
 	border-color:  #89cff0;
 	border-radius: 17px;
@@ -42,7 +46,20 @@ input, textarea{
 	border: solid 3px #98d4f3;	
 }
 
-input:focus, textarea:focus{
+.SpeelButton{
+	margin-top: 30%;
+	margin-left: 30%;
+	border-color:  #009EE2;
+	border-radius: 17px;
+	padding: 8px;
+	font-size: 1em;
+	color: #ffffff;
+	border: solid 3px #009EE2;
+	background-color: transparent;	
+}
+
+
+input:focus, textarea:focus, select:focus{
 	border: solid 3px #77bde0;	
 }
 
@@ -50,6 +67,11 @@ textarea{
 	height: 100px;	
 	resize: none; 
 	overflow: auto;
+}
+
+select{
+	width: 96%;	
+	color:black;
 }
 
 input[type="submit"]{
@@ -69,4 +91,46 @@ input[type="submit"]:hover{
 
 label{
 	margin-top: 2%;
+}
+
+
+#notification {
+	display: inline-block;
+	height: 100px;
+	width: 100%;
+}
+
+.MeerInformatie{
+	margin-top: 50%;
+	margin-bottom: 20%;
+}
+
+.MeerInformatie1{
+	float:left;  
+	width:33%; 
+	height:280px; 
+	border-right: 1px solid #009EE2;    
+}
+
+.MeerInformatie2{
+	float:left;  
+	width:33%; 
+	height:280px;  
+	border-right: 1px solid #009EE2;   
+}
+
+.MeerInformatie3{
+	float:right; 
+	width:33%; 
+	height:280px;  
+}
+
+.Procent{
+	color: #009EE2;
+	font-size: 30px;
+	text-align: center;
+}
+
+.Uitleg, .MeerInformatie4{
+	text-align: center;
 }
