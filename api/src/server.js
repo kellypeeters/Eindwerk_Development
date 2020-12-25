@@ -2,18 +2,9 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const http = require('http');
-const Helpers = require('./utils/helpers.js')
 const { Pool } = require("pg");
 
 const port = 3000
-
-/*const client = new Pool({
-    user: "example",
-    host: "localhost",
-    database: "test",
-    password: "example",
-    port: "5432"
-  });*/
 
   const pg = require('knex')({
     client: 'pg',
@@ -105,9 +96,9 @@ async function initialiseTables() {
   });
 }
 
-app.get('/get/:allevragen', async (req, res) => {
+app.get('/get/:alleVragen', async (req, res) => {
   const result = await pg
-    .select(['voornaam', 'achternaam', 'email', 'onderwerp', 'created_at'])
+    .select(['categoriesoort', 'voornaam', 'achternaam', 'email', 'bericht'])
     .from('vragen')
     console.log(result);
   res.json({
