@@ -76,7 +76,7 @@ describe('testing postgres', () => {
     await client.query('BEGIN');
     //const {rows} = await client.query(`SELECT * FROM categorie WHERE uuid='$uuid'`);
     //expect(rows).toBeInstanceOf(Array);
-    //expect(rows.length).toBeGreaterThan(0);
+    //expect(rows.length).toBeGreaterThan(0); 
 
 
 } catch(err){
@@ -99,7 +99,7 @@ describe('GET / endpoint', () => {
     } catch(e){
     if(e) console.log(e); done(e)
     done()
-    }
+    } 
 })
 });
 
