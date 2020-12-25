@@ -22,6 +22,14 @@ const port = 3000
     connection: process.env.PG_CONNECTION_STRING ? process.env.PG_CONNECTION_STRING : 'postgres://example:example@localhost:5432/test'
   });
 
+  const client = new Pool({
+    user: "example",
+    host: "localhost",
+    database: "test",
+    password: "example",
+    port: "5432"
+  });
+
   const app = express();
 http.Server(app); 
 
@@ -40,18 +48,18 @@ app.get('/test', (req, res) => {
 })
 app.get('/', async (req, res) => {
   const result = await pg
-    .select(['uuid', 'title', 'created_at'])
+    .select(['id', 'created_at'])
     .from('categorie')
   res.json({
       res: result
   })
 })
 
-app.get('/categorie/:uuid', async (req, res) => {
+app.get('/categorie/:id', async (req, res) => {
   const result = await pg
-    .select(['uuid', 'title', 'created_at'])
+    .select(['id', 'created_at'])
     .from('categorie')
-    .where({uuid: req.params.uuid})
+    .where({id: req.params.id})
   res.json({
       res: result
   })
@@ -73,6 +81,9 @@ async function initialiseTables() {
         })
         .then(async () => {
           console.log('created table vragen');
+           for (let i = 0; i < 10; i++) {
+            await pg.table('vragen').insert({ categoriesoort, voornaam, achternaam, email, bericht, id: `random element number ${i}` })
+          }
         });
 
     }
@@ -88,46 +99,36 @@ async function initialiseTables() {
         })
         .then(async () => {
           console.log('created table categorie');
-          for (let i = 0; i < 10; i++) {
-            const uuid = Helpers.generateUUID();
-            await pg.table('categorie').insert({ uuid, title: `random element number ${i}` })
-          }
         });
         
     }
   });
 }
 
-app.post('/post', async (req, res) => {
+app.get('/get/:allevragen', async (req, res) => {
+  const result = await pg
+    .select(['voornaam', 'achternaam', 'email', 'onderwerp', 'created_at'])
+    .from('vragen')
+    console.log(result);
+  res.json({
+      res: result
+  })
+})
 
-  const selected_index = form.elements["onderwerp"].selectedIndex;
-  const voornaam = document.getElementsById('fname').value;
-  const achternaam = document.getElementsById('lname').value;
-  const email = document.getElementsById('email').value;
-  const onderwerp = document.getElementsById('onderwerp').value;
-  const subject = document.getElementsById('subject').value;
+app.post('/post/insertForm', function (req, res) {
+  console.log('start insert form route');
 
-  if(selected_index.value == "technisch"){
-    alert("jeej");
-  }
-  /*{
-     const selected_option_value = Form.elements["onderwerp"].options[selected_index].value;
-     const selected_option_text = Form.elements["onderwerp"].options[selected_index].text;
-  }
-  else
-  {
-     alert('Selecteer een onderwerp uit de lijst');
-  }*/
+  const {voornaam, achternaam, email, onderwerp} = req.body
 
-   client.query(
-    'INSERT INTO categorie (categoriesoort, voornaam, achternaam, email, bericht) VALUES ($1, $2, $3, $4, $5)',
-    [categorie_id, voornaam, achternaam, email, bericht],
+  client.query(
+    'INSERT INTO vragen (voornaam, achternaam, email, onderwerp, subject) VALUES ($1, $2, $3, $4, $5)',
+    [voornaam, achternaam, email, onderwerp, subject],
     (error) => {
       if (error) {
         throw error
       }
-      console.log(categorie_id, voornaam, achternaam, email, bericht);
-      res.status(201).json({status: 'success', message: 'Insert in categorie goed gelukt'})
+      console.log(voornaam, achternaam, email, onderwerp, subject);
+      res.status(201).json({status: 'success', message: 'Insert goed gelukt'})
     },
   )
 }) 
