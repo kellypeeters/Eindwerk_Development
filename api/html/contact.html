@@ -17,7 +17,7 @@
         <form>
           <h1>Contacteer me</h1>
           <label for="fname">Voornaam</label>
-          <input type="text" id="fname" name="firstname" placeholder="Voornaam">
+          <input type="text" id="fname" name="firstname" class="voornaam" placeholder="Voornaam">
       
           <label for="lname">Achternaam</label>
           <input type="text" id="lname" name="lastname" placeholder="Achternaam">
@@ -36,7 +36,7 @@
           <label for="subject">Bericht</label>
           <textarea id="subject" name="subject" placeholder="Schrijf hier je bericht" style="height:200px"></textarea>
       
-          <input type="submit" id="btnInsert" value="Verstuur">
+          <input type="submit" id="btnInsert" onclick="getInputValue();" value="Verstuur">
       
         </form>
       </div>
@@ -60,7 +60,6 @@
   </a>
   <p>Gemaakt door Kelly Peeters</p>
 </footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="contact.js"></script>
 <script type="text/javascript" src="./../src/server.js"></script>
 </body>

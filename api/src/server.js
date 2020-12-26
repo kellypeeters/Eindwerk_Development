@@ -106,24 +106,37 @@ app.get('/get/:alleVragen', async (req, res) => {
   })
 })
 
-app.post('/post/insertForm', function (req, res) {
-  console.log('start insert form route');
+app.post('/post/formulier', async (req, res) => {
 
-  const {voornaam, achternaam, email, onderwerp} = req.body
+  const {categoriesoort, voornaam, achternaam, email, bericht} = req.body
 
-  client.query(
-    'INSERT INTO vragen (voornaam, achternaam, email, onderwerp, subject) VALUES ($1, $2, $3, $4, $5)',
-    [voornaam, achternaam, email, onderwerp, subject],
+   client.query(
+    'INSERT INTO vragen (categoriesoort, voornaam, achternaam, email, bericht) VALUES ($1, $2, $3, $4, $5)',
+    [categoriesoort, voornaam, achternaam, email, bericht],
     (error) => {
       if (error) {
         throw error
       }
-      console.log(voornaam, achternaam, email, onderwerp, subject);
+      console.log(categoriesoort, voornaam, achternaam, email, bericht);
       res.status(201).json({status: 'success', message: 'Insert goed gelukt'})
     },
   )
 }) 
 
+app.delete('/delete/:id', async (req, res) => {
+
+  client.query(
+   `DELETE FROM vragen WHERE id=$1`,
+   [req.body.id],
+   (error) => {
+     if (error) {
+       throw error
+     }
+     console.log("deleted row with id" + req.body.id);
+     res.status(200).json({status: 'success', message: 'delete goed gelukt'})
+   }, 
+ )
+});
 
 initialiseTables()
 

@@ -1,6 +1,7 @@
 const { Pool } = require('pg');
 const supertest = require('supertest');
 const app = require('./../server.js');
+const app2 = require('./../../html/contact.js');
 
  const request = supertest(app);
 
@@ -103,13 +104,42 @@ describe('GET / endpoint', () => {
 })
 });
 
-/*describe('POST', () => {
-    test('Should return single post after insert', async () => {
-        const res = await request.post('/test')
-        .send({ uuid: /\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/, content: 'test' });
-  
-      expect(res.status).toEqual(200);
-      expect(res.body.data).toBeDefined();
-      console.log('woohoow');
-    });
-  });*/
+describe(' POST /test endpoint', () => {
+    
+    test('check if it responds with 201, if it got object', async (done) => {
+        try{
+            await request.post('/post/formulier')
+            .send({
+                categoriesoort, voornaam, achternaam, email, bericht
+              })
+            .expect(201)
+            .then((res) => {
+                done()
+                console.log('inserted');
+            });
+        } catch(e){
+        if(e) console.log(e); done(e)
+        done()
+        }
+    })
+});
+
+describe(' DELETE /test endpoint', () => {
+    
+    test('check if it responds with 200, if it deleted the object', async (done) => {
+        try{
+            await request.delete('/delete/:id')
+            .send({
+                id: '1'
+              })
+            .expect(200)
+            .then((res) => {
+                done()
+                console.log('deleted');
+            });
+        } catch(e){
+        if(e) console.log(e); done(e)
+        done()
+        }
+    })
+})

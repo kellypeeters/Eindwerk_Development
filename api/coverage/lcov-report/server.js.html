@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">46.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/55</span>
+                <span class='fraction'>25/54</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">46.3% </span>
+                <span class="strong">47.17% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/54</span>
+                <span class='fraction'>25/53</span>
             </div>
         
             
@@ -186,7 +186,24 @@
 <a name='L127'></a><a href='#L127'>127</a>
 <a name='L128'></a><a href='#L128'>128</a>
 <a name='L129'></a><a href='#L129'>129</a>
-<a name='L130'></a><a href='#L130'>130</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -295,7 +312,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -308,6 +324,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -423,23 +457,40 @@ app.get('/get/:alleVragen', async (req, res) =&gt; {
   })
 })
 &nbsp;
-app.post('/post/insertForm', <span class="fstat-no" title="function not covered" >fu</span>nction (req, res) {
-<span class="cstat-no" title="statement not covered" >  console.log('start insert form route');</span>
+app.post('/post/formulier', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 &nbsp;
-  const {voornaam, achternaam, email, onderwerp} = <span class="cstat-no" title="statement not covered" >req.body</span>
+  const {categoriesoort, voornaam, achternaam, email, bericht} = <span class="cstat-no" title="statement not covered" >req.body</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  client.query(</span>
-    'INSERT INTO vragen (voornaam, achternaam, email, onderwerp, subject) VALUES ($1, $2, $3, $4, $5)',
-    [voornaam, achternaam, email, onderwerp, subject],
+<span class="cstat-no" title="statement not covered" >   client.query(</span>
+    'INSERT INTO vragen (categoriesoort, voornaam, achternaam, email, bericht) VALUES ($1, $2, $3, $4, $5)',
+    [categoriesoort, voornaam, achternaam, email, bericht],
 <span class="fstat-no" title="function not covered" >    (e</span>rror) =&gt; {
 <span class="cstat-no" title="statement not covered" >      if (error) {</span>
 <span class="cstat-no" title="statement not covered" >        throw error</span>
       }
-<span class="cstat-no" title="statement not covered" >      console.log(voornaam, achternaam, email, onderwerp, subject);</span>
+<span class="cstat-no" title="statement not covered" >      console.log(categoriesoort, voornaam, achternaam, email, bericht);</span>
 <span class="cstat-no" title="statement not covered" >      res.status(201).json({status: 'success', message: 'Insert goed gelukt'})</span>
     },
   )
 }) 
+&nbsp;
+/*app.post('/post/insertForm', function (req, res) {
+  console.log('start insert form route');
+&nbsp;
+  const {voornaam, achternaam, email, onderwerp} = req.body
+&nbsp;
+  client.query(
+    'INSERT INTO vragen (voornaam, achternaam, email, onderwerp, subject) VALUES ($1, $2, $3, $4, $5)',
+    [voornaam, achternaam, email, onderwerp, subject],
+    (error) =&gt; {
+      if (error) {
+        throw error
+      }
+      console.log(voornaam, achternaam, email, onderwerp, subject);
+      res.status(201).json({status: 'success', message: 'Insert goed gelukt'})
+    },
+  )
+}) */
 &nbsp;
 &nbsp;
 initialiseTables()
@@ -451,7 +502,7 @@ module.exports = app;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Dec 25 2020 21:17:36 GMT+0100 (Midden-Europese standaardtijd)
+                at Fri Dec 25 2020 21:35:23 GMT+0100 (Midden-Europese standaardtijd)
             </div>
         </div>
         <script src="prettify.js"></script>
