@@ -7,5 +7,5 @@ Ik heb me vooral bezig gehouden met het contact forumulier. Op deze manier worde
 ## Auteur
 Kelly Peeters
 
-## Problemen/ vragen/ dankwoord
-Dan kan je hiervoor het contactforumulier gebruiken.
+## Problemen
+Voor problemen of vragen wordt meer uitleg gegeven in de contributing file.

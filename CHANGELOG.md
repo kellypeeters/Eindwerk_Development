@@ -29,3 +29,4 @@ Alle opmerkelijke wijzigingen aan dit project zullen in dit bestand gedocumentee
 
 ### Changed
 - Css aangepast
+- Contributing, readme file aangevuld
