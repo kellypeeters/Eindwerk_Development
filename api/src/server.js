@@ -132,10 +132,24 @@ app.delete('/delete/:id', async (req, res) => {
      if (error) {
        throw error
      }
-     console.log("deleted row with id" + req.body.id);
+     console.log("deleted row with id = " + req.body.id);
      res.status(200).json({status: 'success', message: 'delete goed gelukt'})
    }, 
  )
+});
+
+app.patch('/update/:id', (req, res) => {
+  client.query(
+    `UPDATE vragen SET categoriesoort = $1, voornaam = $2, achternaam = $3, email = $4, bericht = $5, updated_at = CURRENT_TIMESTAMP WHERE id = $6`,
+    [req.body.categoriesoort, req.body.voornaam, req.body.achternaam, req.body.email, req.body.bericht, req.body.id],
+    (error) => {
+      if (error) {
+        throw error
+      }
+      console.log("updated row with id = " + req.body.id);
+      res.status(200).json({status: 'success', message: 'update goed gelukt'})
+    }, 
+  )
 });
 
 initialiseTables()

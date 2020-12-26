@@ -143,3 +143,45 @@ describe(' DELETE /test endpoint', () => {
         }
     })
 })
+
+describe(' UPDATE /test endpoint', () => {
+    
+    /*test('check if it responds with 200, if it updated the object', async (done) => {
+        try{
+            await request.put('/update/:id')
+            .send({
+                voornaam : 'TestViaUpdate',
+                id: '2'
+              })
+            .expect(200)
+            .then((res) => {
+                done()
+                console.log('updated');
+            });
+        } catch(e){
+        if(e) console.log(e); done(e)
+        done()
+        }
+    })*/
+    test('UPDATE gegevens van gebruiker met id 2', async done => {
+        try{
+            await request.patch('/update/:id')
+            .send({
+                categoriesoort: "Dankwoord",
+                voornaam: "Test via update", 
+                achternaam: "Test via update",
+                email: "test@test.be",
+                bericht: "Test via update",
+                id: "2"
+              })
+            .expect(200)
+            .then((res) => {
+                done()
+                console.log('updated');
+            });
+        } catch(e){
+        if(e) console.log(e); done(e)
+        done()
+        }
+    })
+})
