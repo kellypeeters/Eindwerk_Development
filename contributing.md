@@ -50,4 +50,4 @@ expected log levels:
 //Discord
 
 ## Get in touch
-peeters.kelly@outlook.com
+peeters.kelly@outlook.com of via contactforumulier
