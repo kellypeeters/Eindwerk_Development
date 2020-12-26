@@ -104,8 +104,32 @@ describe('GET / endpoint', () => {
 })
 });
 
-describe(' POST /test endpoint', () => {
+/*describe(' POST /test endpoint', () => {
     
+    test('check if it responds with 201, if it got object', async (done) => {
+        try{
+            await request.post('/post/formulier')
+            .send({
+                categoriesoort, voornaam, achternaam, email, bericht
+              })
+            .expect(201)
+            .then((res) => {
+                done()
+                console.log('inserted');
+            });
+        } catch(e){
+        if(e) console.log(e); done(e)
+        done()
+        }
+    })
+});*/
+
+describe(' POST /test endpoint', () => {
+    const categoriesoort = document.getElementById("onderwerp").value;
+    const voornaam = document.getElementById("fname").value;
+    const achternaam = document.getElementById("lname").value; 
+    const email = document.getElementById("email").value;
+    const bericht = document.getElementById("subject").value;
     test('check if it responds with 201, if it got object', async (done) => {
         try{
             await request.post('/post/formulier')
@@ -145,24 +169,7 @@ describe(' DELETE /test endpoint', () => {
 })
 
 describe(' UPDATE /test endpoint', () => {
-    
-    /*test('check if it responds with 200, if it updated the object', async (done) => {
-        try{
-            await request.put('/update/:id')
-            .send({
-                voornaam : 'TestViaUpdate',
-                id: '2'
-              })
-            .expect(200)
-            .then((res) => {
-                done()
-                console.log('updated');
-            });
-        } catch(e){
-        if(e) console.log(e); done(e)
-        done()
-        }
-    })*/
+
     test('UPDATE gegevens van gebruiker met id 2', async done => {
         try{
             await request.patch('/update/:id')

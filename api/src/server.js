@@ -106,7 +106,7 @@ app.get('/get/:alleVragen', async (req, res) => {
   })
 })
 
-app.post('/post/formulier', async (req, res) => {
+/*app.post('/post/formulier', async (req, res) => {
 
   const {categoriesoort, voornaam, achternaam, email, bericht} = req.body
 
@@ -121,7 +121,21 @@ app.post('/post/formulier', async (req, res) => {
       res.status(201).json({status: 'success', message: 'Insert goed gelukt'})
     },
   )
-}) 
+})*/
+
+app.post('/post/formulier', (req, res) => {
+  client.query(
+    `INSERT INTO vragen categoriesoort = $1, voornaam = $2, achternaam = $3, email = $4, bericht = $5`,
+    [req.body.categoriesoort, req.body.voornaam, req.body.achternaam, req.body.email, req.body.bericht],
+    (error) => {
+      if (error) {  
+        throw error
+      }
+      console.log("posted data " + req.body.categoriesoort, req.body.voornaam, req.body.achternaam, req.body.email, req.body.bericht);
+      res.status(200).json({status: 'success', message: 'post goed gelukt'})
+    }, 
+  )
+});
 
 app.delete('/delete/:id', async (req, res) => {
 

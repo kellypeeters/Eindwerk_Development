@@ -1,21 +1,8 @@
-.StartTekst{
- position: absolute; 
- text-align: center;
- background-image: url("./../Foto\'s/cover.png");
- background-size: 85%;
- background-position: center;
- background-repeat: no-repeat;
- background-color:  #FF931E;
- height: 80%; 
- width: 91%; 
- transform: translate3d(0px, 0px, 0px) scale(1.1, 1.1); 
- transform-origin: 0% 0% 0px;
-}
-
 h1{
+	padding: 2%;
     margin-top: 0;
-    font-size: 50px;
-	color: #ff952b;
+    font-size: 30px;
+	color: white;
 }
 
 #form{
@@ -28,8 +15,9 @@ form{
 	margin: 0 auto;
 	width: 500px;
 	padding-top: 40px;
-	color: white;
+	color: #FFB347;
 	position: relative;	
+	margin-bottom: 10%;
 }
 
 label, input, textarea, select{
@@ -37,13 +25,17 @@ label, input, textarea, select{
 }
 
 input, textarea, select{
+	margin-top: 20px;
 	width: 90%;	
-	border-color:  #89cff0;
 	border-radius: 17px;
 	padding: 10px;
 	font-size: 1em;
 	color: #D3D3D3;
-	border: solid 3px #98d4f3;	
+	border: solid 3px #FFB347;	
+}
+
+input{
+	color: #141d2b;
 }
 
 .SpeelButton{
@@ -64,6 +56,7 @@ input:focus, textarea:focus, select:focus{
 }
 
 textarea{
+	color: #141d2b;
 	height: 100px;	
 	resize: none; 
 	overflow: auto;
@@ -71,7 +64,7 @@ textarea{
 
 select{
 	width: 96%;	
-	color:black;
+	color: #141d2b;
 }
 
 input[type="submit"]{
@@ -101,8 +94,7 @@ label{
 }
 
 .MeerInformatie{
-	margin-top: 50%;
-	margin-bottom: 20%;
+	margin-top: 7%;
 }
 
 .MeerInformatie1{

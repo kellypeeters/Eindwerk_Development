@@ -8,24 +8,25 @@
     <link rel="stylesheet" href="./../css/basis.css">
 </head>
 <body>
-    <div class="Menu">
+   <div class="Menu">
+        <span class="Titel"><b>Titel</b></span>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>
+
+      <div class="Header">
+        <h1>Contacteer me</h1>
+      </div>
+      
       <div class="ContactForm">
         <form>
-          <h1>Contacteer me</h1>
-          <label for="fname">Voornaam</label>
           <input type="text" id="fname" name="firstname" class="voornaam" placeholder="Voornaam">
       
-          <label for="lname">Achternaam</label>
           <input type="text" id="lname" name="lastname" placeholder="Achternaam">
 
-          <label for="lemail">Email</label>
           <input type="text" id="email" name="email" placeholder="Email">
 
-          <label for="onderwerp">Selecteer het onderwerp</label>
           <select id="onderwerp" name="onderwerp">
           <option value="" disabled selected>Selecteer het onderwerp</option>
           <option value="technisch">Technische vraag</option>
@@ -33,20 +34,12 @@
           <option value="dankwoord">Dankwoord</option>
           </select>
       
-          <label for="subject">Bericht</label>
           <textarea id="subject" name="subject" placeholder="Schrijf hier je bericht" style="height:200px"></textarea>
       
           <input type="submit" id="btnInsert" onclick="getInputValue();" value="Verstuur">
       
         </form>
       </div>
-<div class="ContactGegevens">
-<p>Kelly Peeters</p>
-<p>Student Multimedia &amp; communicatietechnologie</p>
-<p>(+32) 470 04 15 02</p>
-<p>peeters.kelly@outlook.com</p>
-<p>Sociale media links</p>
-</div>
 
 <footer>
   <a href="https://www.linkedin.com/in/kelly-peeters-b0114a172/"  target="_blank">

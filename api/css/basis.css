@@ -2,15 +2,35 @@
     font-family: 'Lilly', sans-serif;
 }
 
+.Header{
+    background-color: #FFB347;
+}
+
 .Menu{
-        margin-top: 2%;
-        margin-bottom: 2%;
-        padding-right: 2%;
+        background-color: white;
         text-align: right;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        padding-right: 8%;
+        margin-top: 2%;
+        margin-right: 10%;
+        margin-left: 10%;
+} 
+
+.Titel{
+    font-size: 30px;
+    padding-right: 50%;
+	color: #FFB347;
 }
     
-a{
-    padding-left: 2%;
+.Menu a{
+    text-decoration: none;
+    color: black;
+    padding-left: 6%;
+}
+
+a:hover{
+    color: #ADD8E6;
 }
 
 footer{
@@ -20,5 +40,11 @@ footer{
     bottom: 0;
     width: 100%;
     color: white;
-    text-align: center;    background-color: #282828;
+    text-align: center;    
+    background-color: #282828;
+}
+
+footer a{
+    padding-left: 1%;
+    padding-right: 1%;
 }
