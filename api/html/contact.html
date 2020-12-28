@@ -20,7 +20,7 @@
       </div>
       
       <div class="ContactForm">
-        <form>
+        <form method="post" id="form"> 
           <input type="text" id="fname" name="firstname" class="voornaam" placeholder="Voornaam">
       
           <input type="text" id="lname" name="lastname" placeholder="Achternaam">
@@ -35,9 +35,9 @@
           </select>
       
           <textarea id="subject" name="subject" placeholder="Schrijf hier je bericht" style="height:200px"></textarea>
-      
-          <input type="submit" id="btnInsert" onclick="getInputValue();" value="Verstuur">
-      
+
+          <input type="submit" id="btnInsert" onclick="getInputValue()" value="Verstuur">
+
         </form>
       </div>
 
@@ -53,6 +53,7 @@
   </a>
   <p>Gemaakt door Kelly Peeters</p>
 </footer>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="contact.js"></script>
 <script type="text/javascript" src="./../src/server.js"></script>
 </body>
