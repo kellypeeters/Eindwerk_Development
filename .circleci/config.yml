@@ -4,7 +4,7 @@ jobs:
   build: 
     docker: 
       - image: circleci/node:12.18
-        environment:
+        environment: 
             DB_PGSQL_HOST: localhost
             DB_PGSQL_PORT: 5432
             DB_PGSQL_DATABASE: test
