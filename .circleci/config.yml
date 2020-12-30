@@ -5,16 +5,10 @@ jobs:
     docker: 
       - image: circleci/node:12.18
         environment: 
-            DB_PGSQL_HOST: localhost
-            DB_PGSQL_PORT: 5432
-            DB_PGSQL_DATABASE: test
-             services:
-    postgres:
-      - image: postgres:latest 
-        env:
             POSTGRES_PASSWORD: example
             POSTGRES_USER: example
             POSTGRES_DB: test
+            POSTGRES_HOST_AUTH_METHOD: trust
     steps:
       - checkout
       - run:
