@@ -39,7 +39,6 @@ describe('testing postgres', () => {
     test('full connect', async (done) => {
         const client = await pgPool.connect();
         try {
-            let uuid = null;
             await request.post('/categorie') 
             .send({content: 'testing' })
             .expect(200)
@@ -64,7 +63,6 @@ describe('testing postgres', () => {
     test('full connect categorie', async (done) => {
         const client = await pgPool.connect();
         try {
-            let uuid = null;
             await request.post('/categorie') 
             .send({ content: 'testing' })
             .expect(200)
@@ -104,13 +102,13 @@ describe('GET / endpoint', () => {
 })
 });
 
-describe('POST /test endpoint', () => {
+/*describe('POST /test endpoint', () => {
 
     test('check if it responds with 201, if it got object', async (done) => {
         try{
             await request.post('/post/formulier')
             .send({
-                categoriesoort: "hallo", 
+                categoriesoort: "Dankwoord", 
                 voornaam: "hallo", 
                 achternaam: "hallo", 
                 email: "hallo", 
@@ -126,7 +124,7 @@ describe('POST /test endpoint', () => {
         done()
         }
     })
-});
+});*/
 
 /*describe(' POST /test endpoint', () => {
     const categoriesoort = document.getElementById("onderwerp").value;
@@ -159,7 +157,7 @@ describe(' DELETE /test endpoint', () => {
         try{
             await request.delete('/delete/:id')
             .send({
-                id: '1'
+                id: '4'
               })
             .expect(200)
             .then((res) => {
@@ -179,7 +177,7 @@ describe(' UPDATE /test endpoint', () => {
         try{
             await request.patch('/update/:id')
             .send({
-                categoriesoort: "Dankwoord",
+                categoriesoort: "Probleem",
                 voornaam: "Test via update", 
                 achternaam: "Test via update",
                 email: "test@test.be",

@@ -90,8 +90,7 @@ async function initialiseTables() {
         })
         .then(async () => {
           console.log('created table categorie');
-        });
-        
+        }); 
     }
   });
 }
@@ -100,9 +99,9 @@ app.get('/get/:alleVragen', async (req, res) => {
   const result = await pg
     .select(['categoriesoort', 'voornaam', 'achternaam', 'email', 'bericht'])
     .from('vragen')
-    console.log(result);
+    console.log("De vragen in de database zijn " + (JSON.stringify(result)));
   res.json({
-      res: result
+      res: result 
   })
 })
 
@@ -140,6 +139,7 @@ app.post('/post/formulier', async (req, res) => {
       }
       console.log(categoriesoort, voornaam, achternaam, email, bericht);
       res.status(201).json({status: 'success', message: 'Insert goed gelukt'})
+      res.send('Oke');
     },
   )
 }) 

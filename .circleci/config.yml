@@ -7,5 +7,16 @@ jobs:
     steps:
       - checkout
 
+    - run:
+      name: Install local dependencies
+      command: npm install
+
+    - run:
+      name: Wait for Postgres to start
+      command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+    - run:
+      name: Create database
+      command: npm run db:reset:test
       - run: cd api && npm ci
       - run: cd api && npm test
