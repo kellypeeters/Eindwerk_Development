@@ -2,24 +2,23 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const http = require('http');
-const Helpers = require('./utils/helpers.js')
 const { Pool } = require("pg");
 
 const port = 3000
-
-/*const client = new Pool({
-    user: "example",
-    host: "localhost",
-    database: "test",
-    password: "example",
-    port: "5432"
-  });*/
 
   const pg = require('knex')({
     client: 'pg',
     version: '9.6',      
     searchPath: ['knex', 'public'],
     connection: process.env.PG_CONNECTION_STRING ? process.env.PG_CONNECTION_STRING : 'postgres://example:example@localhost:5432/test'
+  });
+
+  const client = new Pool({
+    user: "example",
+    host: "localhost",
+    database: "test",
+    password: "example",
+    port: "5432"
   });
 
   const app = express();
@@ -35,28 +34,9 @@ app.use(
 );  
 
 app.get('/test', (req, res) => {
-
+  console.log("test");
   res.status(200).send();
-})
-app.get('/', async (req, res) => {
-  const result = await pg
-    .select(['uuid', 'title', 'created_at'])
-    .from('categorie')
-  res.json({
-      res: result
-  })
-})
-
-app.get('/categorie/:uuid', async (req, res) => {
-  const result = await pg
-    .select(['uuid', 'title', 'created_at'])
-    .from('categorie')
-    .where({uuid: req.params.uuid})
-  res.json({
-      res: result
-  })
-})
-
+});
 
 async function initialiseTables() {
   await pg.schema.hasTable('vragen').then(async (exists) => {
@@ -73,6 +53,9 @@ async function initialiseTables() {
         })
         .then(async () => {
           console.log('created table vragen');
+           for (let i = 0; i < 10; i++) {
+            await pg.table('vragen').insert({ categoriesoort, voornaam, achternaam, email, bericht, id: `random element number ${i}` })
+          }
         });
 
     }
@@ -88,50 +71,66 @@ async function initialiseTables() {
         })
         .then(async () => {
           console.log('created table categorie');
-          for (let i = 0; i < 10; i++) {
-            const uuid = Helpers.generateUUID();
-            await pg.table('categorie').insert({ uuid, title: `random element number ${i}` })
-          }
-        });
-        
+        }); 
     }
   });
 }
 
-app.post('/post', async (req, res) => {
+app.get('/get/:alleVragen', async (req, res) => {
+  const result = await pg
+    .select(['categoriesoort', 'voornaam', 'achternaam', 'email', 'bericht'])
+    .from('vragen')
+    console.log("De vragen in de database zijn " + (JSON.stringify(result)));
+  res.json({
+      res: result 
+  })
+})
 
-  const selected_index = form.elements["onderwerp"].selectedIndex;
-  const voornaam = document.getElementsById('fname').value;
-  const achternaam = document.getElementsById('lname').value;
-  const email = document.getElementsById('email').value;
-  const onderwerp = document.getElementsById('onderwerp').value;
-  const subject = document.getElementsById('subject').value;
+app.post('/post/formulier', async (req, res) => {
 
-  if(selected_index.value == "technisch"){
-    alert("jeej");
-  }
-  /*{
-     const selected_option_value = Form.elements["onderwerp"].options[selected_index].value;
-     const selected_option_text = Form.elements["onderwerp"].options[selected_index].text;
-  }
-  else
-  {
-     alert('Selecteer een onderwerp uit de lijst');
-  }*/
+  const {categoriesoort, voornaam, achternaam, email, bericht} = req.body
 
    client.query(
-    'INSERT INTO categorie (categoriesoort, voornaam, achternaam, email, bericht) VALUES ($1, $2, $3, $4, $5)',
-    [categorie_id, voornaam, achternaam, email, bericht],
+    'INSERT INTO vragen (categoriesoort, voornaam, achternaam, email, bericht) VALUES ($1, $2, $3, $4, $5)',
+    [categoriesoort, voornaam, achternaam, email, bericht],
     (error) => {
       if (error) {
         throw error
       }
-      console.log(categorie_id, voornaam, achternaam, email, bericht);
-      res.status(201).json({status: 'success', message: 'Insert in categorie goed gelukt'})
-    },
+      console.log(categoriesoort, voornaam, achternaam, email, bericht);
+      res.status(201).json({status: 'success', message: 'Insert goed gelukt'})
+ },
   )
 }) 
 
+app.delete('/delete/:id', async (req, res) => {
+
+  client.query(
+   `DELETE FROM vragen WHERE id=$1`,
+   [req.body.id],
+   (error) => {
+     if (error) {
+       throw error
+     }
+     console.log("deleted row with id = " + req.body.id);
+     res.status(200).json({status: 'success', message: 'delete goed gelukt'})
+   }, 
+ )
+});
+
+app.patch('/update/:id', (req, res) => {
+  client.query(
+    `UPDATE vragen SET categoriesoort = $1, voornaam = $2, achternaam = $3, email = $4, bericht = $5, updated_at = CURRENT_TIMESTAMP WHERE id = $6`,
+    [req.body.categoriesoort, req.body.voornaam, req.body.achternaam, req.body.email, req.body.bericht, req.body.id],
+    (error) => {
+      if (error) {
+        throw error
+      }
+      console.log("updated row with id = " + req.body.id);
+      res.status(200).json({status: 'success', message: 'update goed gelukt'})
+    }, 
+  )
+});
 
 initialiseTables()
 

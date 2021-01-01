@@ -1,10 +1,9 @@
 const { Pool } = require('pg');
 const supertest = require('supertest');
 const app = require('./../server.js');
+const app2 = require('./../../html/contact.js');
 
  const request = supertest(app);
-
-describe('testing postgres', () => {
 
     let pgPool;
 
@@ -18,82 +17,86 @@ describe('testing postgres', () => {
         await pgPool.end();
     });
 
-    // test send to endpoint -> uuid is uitgekomen
+describe('GET / endpoint', () => {
+  test('check if it responds with 200, if it got the object', async (done) => {
+    try{
+        await request.get('/get/:alleVragen')
+        .expect(200)
+        .then((res) => {
+            done()
+            console.log('get all records');
+        });
+    } catch(e){
+    if(e) console.log(e); done(e)
+    done()
+    } 
+})
+});
 
-    test('connection', async () => {
-        const client = await pgPool.connect();
-        try {
-            await client.query('BEGIN');
-
-            const { rows } = await client.query('SELECT * FROM categorie');
-            expect(rows).toBeInstanceOf(Array);
-
-        } catch(err) {
-          throw err;
-        } finally {
-            client.release();
+describe('POST /test endpoint', () => {
+    test('check if it responds with 201, if it got object', async (done) => {
+        try{
+            await request.post('/post/formulier')
+            .send({
+                categoriesoort: "Dankwoord", 
+                voornaam: "hallo", 
+                achternaam: "hallo", 
+                email: "hallo", 
+                bericht: "hallo"
+              })
+            .expect(201)
+            .then((res) => {
+                done()
+                console.log('inserted');
+            });
+        } catch(e){
+        if(e) console.log(e); done(e)
+        done()
         }
-    }) 
+    })
+});
 
-    test('full connect', async (done) => {
-        const client = await pgPool.connect();
-        try {
-            let uuid = null;
-            await request.post('/categorie') 
-            .send({content: 'testing' })
+describe(' DELETE /test endpoint', () => {
+    
+    test('check if it responds with 200, if it deleted the object', async (done) => {
+        try{
+            await request.delete('/delete/:id')
+            .send({
+                id: '4'
+              })
             .expect(200)
             .then((res) => {
-                uuid = res.body[0].uuid
                 done()
-        }).catch((e) => {
-          console.log(e);
+                console.log('deleted');
+            });
+        } catch(e){
+        if(e) console.log(e); done(e)
+        done()
+        }
     })
-    await client.query('BEGIN');
-    const {rows} = await client.query(`SELECT * FROM categorie WHERE uuid='${uuid}'`);
-    expect(rows).toBeInstanceOf(Array);
-    expect(rows.length).toBeGreaterThan(0);
-
-
-} catch(err){
-    throw err;
-} finally {
-    client.release();
-}
-    }) 
-    test('full connect categorie', async (done) => {
-        const client = await pgPool.connect();
-        try {
-            let uuid = null;
-            await request.post('/categorie') 
-            .send({ content: 'testing' })
-            .expect(200)
-            .then((res) => {
-                uuid = res.body[0].uuid
-                done()
-        }).catch((e) => {
-          console.log(e);
-    })
-    await client.query('BEGIN');
-    const {rows} = await client.query(`SELECT * FROM categorie WHERE uuid='$uuid'`);
-    expect(rows).toBeInstanceOf(Array);
-    expect(rows.length).toBeGreaterThan(0);
-
-
-} catch(err){
-    throw err;
-} finally {
-    client.release();
-}
-    }) 
 })
 
-/*describe('POST', () => {
-    test('Should return single post after insert', async () => {
-        const res = await request.post('/test')
-        .send({ uuid: /\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/, content: 'test' });
-  
-      expect(res.status).toEqual(200);
-      expect(res.body.data).toBeDefined();
-      console.log('woohoow');
-    });
-  });*/
+describe(' UPDATE /test endpoint', () => {
+
+    test('UPDATE gegevens van gebruiker met id 2', async done => {
+        try{
+            await request.patch('/update/:id')
+            .send({
+                categoriesoort: "Probleem",
+                voornaam: "Test via update", 
+                achternaam: "Test via update",
+                email: "test@test.be",
+                bericht: "Test via update",
+                id: "2"
+              })
+            .expect(200)
+            .then((res) => {
+                done()
+                console.log('updated');
+            });
+        } catch(e){
+        if(e) console.log(e); done(e)
+        done()
+        }
+    })
+})
