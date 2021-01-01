@@ -3,6 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const http = require('http');
 const { Pool } = require("pg");
+var cors = require('cors')
 
 const port = 3000
 
@@ -24,6 +25,13 @@ const port = 3000
   const app = express();
 http.Server(app); 
 
+app.use(cors())
+
+var server = app.listen(3000, function() {
+
+});
+
+server.timeout = 600000; 
 
 app.use(bodyParser.json());
 app.use(

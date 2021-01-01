@@ -1,53 +1,44 @@
+# Bijdrage richtlijnen
+Bedankt voor uw interesse in mijn project! In dit document vindt u meer uitleg over hoe u kunt bijdragen. Hopelijk is alles duidelijk.
 
-# contributing guidlines 
----
+Lees zeker ook eerst de code-of-conduct
 
-//intro
-Verwijs ook naar code of conduct
+## Hoe raporteer ik bugs?
+- Open een ticket in Github
+- Zet de applicatie naar VERBOSE in uw .env file
+- Voeg uw Error logs toe
+- Leg de opstelling uit
+- Voeg het volgende toe
 
-## Report bugs
-* Open a ticket in Github
-* Set application to VERBOSE in your .env file
-* Include your Error logs
-* Explain the setup
-* Include the following
-
-```
+´´´
 OS:
-Docker version:
+Docker versie:
 Global npms:
-npm version:
-```
+npm versie:
+´´´
 
-## Suggest new features
-* Open a feature request on github
-* Declare why usefull
-
-## Guidlines for development
-
-// explain how to setup the system for development
-env file adaption
-* DB dev
-* VERBOSE
-
+## Stel nieuwe features voor
+- Open een feature request in github
+- Leg uit waarom het nuttig zou zijn
+- Richtlijnen voor development
+- Als u het project wilt gebruik voor eigen doeleiden hoeft u enkele zaken eerst in orde te brengen:
 
 ## Logging
-
-```
 expected log levels:
 
+´´´
 |verbose level|code|
 |---|---|
 |2|console.log|
 |1|console.warn|
 |0|console.error|
-```
+´´´
 
 ## Setup for development
-
-## Roadmap and vision
-//Mention van een forum
-//Discord
+- Je kan de api lokaal laten draaien via Docker. Als je dit niet hebt kan je deze makkelijk downloaden en een account op aanmaken.
+- Als dit in orde is hoef je in de terminal enkel docker-compose up in te geven.
+- Via een programma zoals Tableplus kan je de database live bekijken.
+- Als je index.html opent in jouw browser krijg je de website te zien.
 
 ## Get in touch
-peeters.kelly@outlook.com
+U kan me altijd bereieken op peeters.kelly@outlook.com.
