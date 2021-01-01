@@ -12,10 +12,20 @@
  transform-origin: 0% 0% 0px;
 }
 
+.Titel{
+	font-size: 30px;
+	color: #FF931E;
+	padding-right: 50%;
+	text-align: left;
+	background-color: white;
+}
+
 h1{
-    margin-top: 0;
-    font-size: 50px;
-	color: #ff952b;
+	margin-top: 0;
+	font-size: 50px;
+	padding: 2%;
+	color: white;
+	background-color: #ff952b;
 }
 
 #form{
@@ -30,9 +40,11 @@ form{
 	padding-top: 40px;
 	color: white;
 	position: relative;	
+	margin-bottom: 20%;
 }
 
-label, input, textarea, select{
+input, textarea, select{
+	margin-bottom: 5%;
 	display: block;	
 }
 
@@ -88,11 +100,6 @@ input[type="submit"]:hover{
 	border: solid 3px #e58f0e;	
 	background-color: #e58f0e;
 }
-
-label{
-	margin-top: 2%;
-}
-
 
 #notification {
 	display: inline-block;

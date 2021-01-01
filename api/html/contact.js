@@ -1,4 +1,4 @@
-/*$('#btnInsert').click((e) => {
+$('#btnInsert').click((e) => {
   e.preventDefault();
     console.log('clicksubmit');
     /*const categoriesoort = document.getElementById("onderwerp").value;
@@ -30,7 +30,7 @@
       console.log(er2);
     }); */
 
-    /*$.ajax({
+    $.ajax({
       url: 'http://localhost:5432/get/:alleVragen',
       method: 'GET',  
       dataType: 'json'
@@ -43,7 +43,7 @@
       console.log(er1);
       console.log(er2); 
     });
-  });  */
+  });  
 
 //Hide quotes and time
 /*function showUserQuotes() {
