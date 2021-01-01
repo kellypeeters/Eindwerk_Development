@@ -1,10 +1,10 @@
 
 # Bijdrage richtlijnen
-Als u bijdraagt ​​aan deze repository, bespreek dan eerst de wijziging die u wilt aanbrengen via e-mail voordat u een wijziging aanbrengt.
+Bedankt voor uw interesse in mijn project! In dit document vindt u meer uitleg over hoe u kunt bijdragen. Hopelijk is alles duidelijk.
 
 Lees zeker ook eerst de code-of-conduct
 
-## Raporteer bugs
+## Hoe raporteer ik bugs?
 * Open een ticket in Github
 * Zet de applicatie naar VERBOSE in uw .env file
 * Voeg uw Error logs toe
@@ -24,9 +24,6 @@ npm versie:
 
 ## Richtlijnen voor development
 Als u het project wilt gebruik voor eigen doeleiden hoeft u enkele zaken eerst in orde te brengen:
-
-
-
 ## Logging
 
 ```
@@ -38,15 +35,11 @@ expected log levels:
 |1|console.warn|
 |0|console.error|
 ```
-
 ## Setup for development
-* Installeer de pakketen die gebruikt worden in dit project zoals Jest, Postgres, ...
-* Installeer een app zoals Tableplus om te checken of de database werkt
-* Voor het project te runnen moet u in de terminal: 
-      * docker-compose build
-      * docker-compose up
-      * npm test
-  invullen. Hierdoor kan je alle functionaliteiten gebruiken.
+- Je kan de api lokaal laten draaien via Docker. Als je dit niet hebt kan je deze makkelijk downloaden en een account op aanmaken.
+- Als dit in orde is hoef je in de terminal enkel docker-compose up in te geven.
+- Via een programma zoals Tableplus kan je de database live bekijken.
+- Als je index.html opent in jouw browser krijg je de website te zien.
 
 ## Get in touch
-peeters.kelly@outlook.com 
+U kan me altijd bereieken op peeters.kelly@outlook.com. 

@@ -23,14 +23,14 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">10% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/10</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>0/0</span>
             </div>
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/9</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
@@ -118,25 +118,7 @@
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -166,18 +148,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -203,17 +179,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">$('#btnInsert').click(<span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
-<span class="cstat-no" title="statement not covered" >  e.preventDefault();</span>
-<span class="cstat-no" title="statement not covered" >    console.log('clicksubmit');</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*$('#btnInsert').click((e) =&gt; {
+  e.preventDefault();
+    console.log('clicksubmit');
     /*const categoriesoort = document.getElementById("onderwerp").value;
     const voornaam = document.getElementById("fname").value;
     const achternaam = document.getElementById("lname").value;
@@ -243,36 +211,20 @@
       console.log(er2);
     }); */
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    $.ajax({</span>
-      url: 'http://127.0.0.0:5432/get/:alleVragen',
-      method: 'GET',
+    /*$.ajax({
+      url: 'http://localhost:5432/get/:alleVragen',
+      method: 'GET',  
       dataType: 'json'
-    }).done(<span class="fstat-no" title="function not covered" >fu</span>nction (data) {
-<span class="cstat-no" title="statement not covered" >      for (let b = <span class="cstat-no" title="statement not covered" >0;</span> b &lt; data.length; b++) {</span>
-<span class="cstat-no" title="statement not covered" >        console.log(data);</span>
-<span class="cstat-no" title="statement not covered" >        $('#IngeleverdeForms').append(`&lt;p class=\"form\"&gt; ${data[b].value} &lt;/p&gt;`);</span>
+    }).done(function (data) {
+      for (let b = 0; b &lt; data.length; b++) {
+        console.log(data);
+        $('#IngeleverdeForms').append(`&lt;p class=\"form\"&gt; ${data[b].value} &lt;/p&gt;`);
       }
-    }).fail(<span class="fstat-no" title="function not covered" >fu</span>nction (er1, er2) {
-<span class="cstat-no" title="statement not covered" >      console.log(er1);</span>
-<span class="cstat-no" title="statement not covered" >      console.log(er2); </span>
+    }).fail(function (er1, er2) {
+      console.log(er1);
+      console.log(er2); 
     });
-  });      
-&nbsp;
-/*function getInputValue(){
-    const categoriesoort = document.getElementById("onderwerp").value;
-    const voornaam = document.getElementById("fname").value;
-    const achternaam = document.getElementById("lname").value;
-    const email = document.getElementById("email").value;
-    const bericht = document.getElementById("subject").value; 
-  
-    alert(achternaam);   
-&nbsp;
-    let url = 'http://127.0.0.0:5432/post/formulier';
-  
-    let request = new XMLHttpRequest();
-    request.open('POST', url, true);
-    request.send(categoriesoort, voornaam, achternaam, email, bericht);
-}*/
+  });  */
 &nbsp;
 //Hide quotes and time
 /*function showUserQuotes() {
@@ -295,7 +247,7 @@ $.ajax({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Dec 30 2020 18:48:35 GMT+0100 (Midden-Europese standaardtijd)
+                at Fri Jan 01 2021 20:19:13 GMT+0100 (Midden-Europese standaardtijd)
             </div>
         </div>
         <script src="../prettify.js"></script>

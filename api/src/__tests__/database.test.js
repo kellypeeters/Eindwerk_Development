@@ -5,8 +5,6 @@ const app2 = require('./../../html/contact.js');
 
  const request = supertest(app);
 
-describe('testing postgres', () => {
-
     let pgPool;
 
     beforeAll(() => {
@@ -18,73 +16,6 @@ describe('testing postgres', () => {
     afterAll(async () => {
         await pgPool.end();
     });
-
-    // test send to endpoint -> uuid is uitgekomen
-
-    test('connection', async () => {
-        const client = await pgPool.connect();
-        try {
-            await client.query('BEGIN');
-
-            const { rows } = await client.query('SELECT * FROM categorie');
-            expect(rows).toBeInstanceOf(Array);
-
-        } catch(err) {
-          throw err;
-        } finally {
-            client.release();
-        }
-    }) 
-
-    test('full connect', async (done) => {
-        const client = await pgPool.connect();
-        try {
-            await request.post('/categorie') 
-            .send({content: 'testing' })
-            .expect(200)
-            .then((res) => {
-                // uuid = res.body[0].uuid
-                done()
-        }).catch((e) => {
-          console.log(e);
-    })
-    await client.query('BEGIN');
-   // const {rows} = await client.query(`SELECT * FROM categorie WHERE uuid='${uuid}'`);
-   // expect(rows).toBeInstanceOf(Array);
-   // expect(rows.length).toBeGreaterThan(0);
-
-
-} catch(err){
-    throw err;
-} finally {
-    client.release();
-}
-    }) 
-    test('full connect categorie', async (done) => {
-        const client = await pgPool.connect();
-        try {
-            await request.post('/categorie') 
-            .send({ content: 'testing' })
-            .expect(200)
-            .then((res) => {
-               // uuid = res.body[0].uuid
-                done()
-        }).catch((e) => {
-          console.log(e);
-    })
-    await client.query('BEGIN');
-    //const {rows} = await client.query(`SELECT * FROM categorie WHERE uuid='$uuid'`);
-    //expect(rows).toBeInstanceOf(Array);
-    //expect(rows.length).toBeGreaterThan(0); 
-
-
-} catch(err){
-    throw err;
-} finally {
-    client.release();
-}
-    }) 
-})
 
 describe('GET / endpoint', () => {
   test('check if it responds with 200, if it got the object', async (done) => {
@@ -102,8 +33,7 @@ describe('GET / endpoint', () => {
 })
 });
 
-/*describe('POST /test endpoint', () => {
-
+describe('POST /test endpoint', () => {
     test('check if it responds with 201, if it got object', async (done) => {
         try{
             await request.post('/post/formulier')
@@ -124,32 +54,7 @@ describe('GET / endpoint', () => {
         done()
         }
     })
-});*/
-
-/*describe(' POST /test endpoint', () => {
-    const categoriesoort = document.getElementById("onderwerp").value;
-    const voornaam = document.getElementById("fname").value;
-    const achternaam = document.getElementById("lname").value; 
-    const email = document.getElementById("email").value;
-    const bericht = document.getElementById("subject").value;
-
-    test('check if it responds with 201, if it got object', async (done) => {
-        try{
-            await request.post('/post/formulier')
-            .send({
-                fefe, fefe, fefe, fefe, fefe
-              })
-            .expect(201)
-            .then((res) => {
-                done()
-                console.log('inserted');
-            });
-        } catch(e){
-        if(e) console.log(e); done(e)
-        done()
-        }
-    })
-});*/
+});
 
 describe(' DELETE /test endpoint', () => {
     

@@ -1,4 +1,4 @@
-$('#btnInsert').click((e) => {
+/*$('#btnInsert').click((e) => {
   e.preventDefault();
     console.log('clicksubmit');
     /*const categoriesoort = document.getElementById("onderwerp").value;
@@ -30,7 +30,7 @@ $('#btnInsert').click((e) => {
       console.log(er2);
     }); */
 
-    $.ajax({
+    /*$.ajax({
       url: 'http://localhost:5432/get/:alleVragen',
       method: 'GET',  
       dataType: 'json'
@@ -43,23 +43,7 @@ $('#btnInsert').click((e) => {
       console.log(er1);
       console.log(er2); 
     });
-  });      
-
-/*function getInputValue(){
-    const categoriesoort = document.getElementById("onderwerp").value;
-    const voornaam = document.getElementById("fname").value;
-    const achternaam = document.getElementById("lname").value;
-    const email = document.getElementById("email").value;
-    const bericht = document.getElementById("subject").value; 
-  
-    alert(achternaam);   
-
-    let url = 'http://127.0.0.0:5432/post/formulier';
-  
-    let request = new XMLHttpRequest();
-    request.open('POST', url, true);
-    request.send(categoriesoort, voornaam, achternaam, email, bericht);
-}*/
+  });  */
 
 //Hide quotes and time
 /*function showUserQuotes() {

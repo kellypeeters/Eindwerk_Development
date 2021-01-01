@@ -34,28 +34,9 @@ app.use(
 );  
 
 app.get('/test', (req, res) => {
-
+  console.log("test");
   res.status(200).send();
-})
-app.get('/', async (req, res) => {
-  const result = await pg
-    .select(['id', 'created_at'])
-    .from('categorie')
-  res.json({
-      res: result
-  })
-})
-
-app.get('/categorie/:id', async (req, res) => {
-  const result = await pg
-    .select(['id', 'created_at'])
-    .from('categorie')
-    .where({id: req.params.id})
-  res.json({
-      res: result
-  })
-})
-
+});
 
 async function initialiseTables() {
   await pg.schema.hasTable('vragen').then(async (exists) => {
@@ -139,8 +120,7 @@ app.post('/post/formulier', async (req, res) => {
       }
       console.log(categoriesoort, voornaam, achternaam, email, bericht);
       res.status(201).json({status: 'success', message: 'Insert goed gelukt'})
-      res.send('Oke');
-    },
+ },
   )
 }) 
 
