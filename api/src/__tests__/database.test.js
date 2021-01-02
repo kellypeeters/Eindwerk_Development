@@ -38,6 +38,7 @@ describe('POST /test endpoint', () => {
         try{
             await request.post('/post/formulier')
             .send({
+                categoriesoort_id: "0", 
                 categoriesoort: "Dankwoord", 
                 voornaam: "hallo", 
                 achternaam: "hallo", 
@@ -82,6 +83,7 @@ describe(' UPDATE /test endpoint', () => {
         try{
             await request.patch('/update/:id')
             .send({
+                categoriesoort_id: "1", 
                 categoriesoort: "Probleem",
                 voornaam: "Test via update", 
                 achternaam: "Test via update",
