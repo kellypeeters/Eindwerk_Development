@@ -27,6 +27,10 @@ Endpoints: Testen of de verschillend endpoints werken.
 ## Problemen
 Voor problemen of vragen wordt meer uitleg gegeven in de contributing file.
 
+## Github Flow vs GIT Flow
+Dit project maakt gebruik van Github flow. De reden waarom ik Github flow heb gekozen is omdat het 
+bijna alle functionaliteiten biedt die Git Flow doet, zoals feature branches. Maar in tegenstelling tot Git Flow, combineert GitHub Flow de mainline en release branches tot een "master" en behandelt hotfixes net als feature branches. Dit vereenvoudigde model is beter geschikt voor modellen voor continue levering, waarbij wijzigingen snel en eenvoudig kunnen worden aangebracht, soms meerdere keren per dag. Exact wat mijn project dus nodig heeft.
+
 ## Status
 Nog in development.
 ## Auteur

@@ -36,3 +36,8 @@ Alle opmerkelijke wijzigingen aan dit project zullen in dit bestand gedocumentee
 - Contributing file
 - Readme file
 - Database.test.js (connectie tests verwijderd)
+
+## [1.1.2] - 2021-01-02
+
+### Added
+- Unit tests toegevoegd om email te testen
