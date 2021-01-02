@@ -38,44 +38,6 @@ app.get('/test', (req, res) => {
   res.status(200).send();
 });
 
-async function initialiseTables() {
-  await pg.schema.hasTable('vragen').then(async (exists) => {
-    if (!exists) {
-      await pg.schema
-        .createTable('vragen', (table) => {
-          table.increments();
-          table.string('categoriesoort');
-          table.string('voornaam');
-          table.string('achternaam');
-          table.string('email');
-          table.string('bericht');
-          table.timestamps(true, true);
-        })
-        .then(async () => {
-          console.log('created table vragen');
-           for (let i = 0; i < 10; i++) {
-            await pg.table('vragen').insert({ categoriesoort, voornaam, achternaam, email, bericht, id: `random element number ${i}` })
-          }
-        });
-
-    }
-  });
-  await pg.schema.hasTable('categorie').then(async (exists) => {
-    if (!exists) {
-      await pg.schema
-        .createTable('categorie', (table) => {
-          table.increments();
-          table.string('categoriesoort');
-          table.string('summary');
-          table.timestamps(true, true);
-        })
-        .then(async () => {
-          console.log('created table categorie');
-        }); 
-    }
-  });
-}
-
 app.get('/get/:alleVragen', async (req, res) => {
   const result = await pg
     .select(['categoriesoort', 'voornaam', 'achternaam', 'email', 'bericht'])
@@ -93,7 +55,6 @@ app.get('/get/:alleVragen', async (req, res) => {
     const achternaam = req.body.achternaam;
     const email = req.body.email;
     const bericht = req.body.bericht;
-
     client.query(
     `INSERT INTO vragen categoriesoort = $1, voornaam = $2, achternaam = $3, email = $4, bericht = $5`,
     [categoriesoort, voornaam, achternaam, email, bericht],
@@ -152,6 +113,87 @@ app.patch('/update/:id', (req, res) => {
     }, 
   )
 });
+
+async function initialiseTables() {
+  await pg.schema.hasTable('vragen').then(async (exists) => {
+    if (!exists) {
+      await pg.schema
+        .createTable('vragen', (table) => {
+          table.increments();
+          table.integer('categorie_id');
+          table.string('categoriesoort');
+          table.string('voornaam');
+          table.string('achternaam');
+          table.string('email');
+          table.string('bericht');
+          table.timestamps(true, true);
+        })
+        .then(async () => {
+          console.log('created table vragen');
+
+          let dankwoord = ["Dankwoord"];
+          let probleem = ["Probleem"];
+          let technisch = ["Technische fout"];
+
+          
+          for (let i = 0; i < dankwoord.length; i++) {
+            await pg.table('vragen').insert({
+              categorie_id: 0,
+              categoriesoort: dankwoord[i],
+              voornaam,
+              achternaam,
+              email, 
+              bericht
+            })
+          }
+        });
+
+          for (let i = 0; i < probleem.length; i++) {
+            await pg.table('vragen').insert({
+              categorie_id: 1,
+              categoriesoort: probleem[i],
+              voornaam,
+              achternaam,
+              email, 
+              bericht
+            })
+          }
+
+          for (let i = 0; i < technisch.length; i++) {
+            await pg.table('vragen').insert({
+              categorie_id: 2,
+              categoriesoort: technisch[i],
+              voornaam,
+              achternaam,
+              email, 
+              bericht
+            })
+          }
+        }
+      });
+
+  await pg.schema.hasTable('categorie').then(async (exists) => {
+    let soortenOnderwerpen = ["Dankwoord", "Probleem", "Technische fout"];
+    if (!exists) {
+      await pg.schema
+        .createTable('categorie', (table) => {
+          table.increments();
+          table.string('categoriesoort');
+          table.integer('categorie_id');
+          table.timestamps(true, true);
+        })
+        .then(async () => {
+          console.log('created table categorie');
+          for (let i = 0; i < soortenOnderwerpen.length; i++) {
+            await pg.table('categorie').insert({
+              categoriesoort: soortenOnderwerpen[i],
+              categorie_id: i 
+            })
+          }
+        });
+      }
+    });
+  }
 
 initialiseTables()
 
