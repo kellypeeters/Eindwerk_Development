@@ -17,6 +17,7 @@ const app2 = require('./../../html/contact.js');
         await pgPool.end();
     });
 
+    //Krijg alle ingevulde formulieren via localhost:3000 en in console.log
 describe('GET / endpoint', () => {
   test('check if it responds with 200, if it got the object', async (done) => {
     try{
@@ -33,6 +34,13 @@ describe('GET / endpoint', () => {
 })
 });
 
+app.post('/endpoint', function(req, res){
+	var obj = {};
+	console.log('body: ' + JSON.stringify(req.body));
+	res.send(req.body);
+});
+
+//Post een formulier via deze file je hoeft enkel de woorden tussen "" te veranderen bij send
 describe('POST /test endpoint', () => {
     test('check if it responds with 201, if it got object', async (done) => {
         try{
@@ -56,6 +64,7 @@ describe('POST /test endpoint', () => {
     })
 });
 
+//Delete via deze file een ingediende form via id
 describe(' DELETE /test endpoint', () => {
     
     test('check if it responds with 200, if it deleted the object', async (done) => {
@@ -76,6 +85,7 @@ describe(' DELETE /test endpoint', () => {
     })
 })
 
+//Update een ingediende form via deze file via id
 describe(' UPDATE /test endpoint', () => {
 
     test('UPDATE gegevens van gebruiker met id 2', async done => {

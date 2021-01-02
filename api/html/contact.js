@@ -1,5 +1,6 @@
 $('#btnInsert').click((e) => {
   e.preventDefault();
+});
     /*console.log('clicksubmit');
     const categoriesoort = document.getElementById('onderwerp').value;
     const voornaam = document.getElementById('fname').value;
@@ -32,12 +33,12 @@ $('#btnInsert').click((e) => {
       console.log(er2);
     }); 
   });*/
-    
-  $.ajax({
+ /*$.ajax({
       url: 'http://localhost:3000/get/:alleVragen',
       method: 'GET',  
       dataType: 'json',
-      timeout: 1000000
+      timeout: 1000000,
+      cache: false
     }).done(function (data) {
       for (let b = 0; b < data.length; b++) {
         console.log(data);
@@ -47,7 +48,7 @@ $('#btnInsert').click((e) => {
       console.log(er1);  
       console.log(er2); 
     });
-  }); 
+  }); */
 
   /*$.ajax({
     url: 'http://localhost:3000/get/:alleVragen',

@@ -8,6 +8,7 @@ Dit is een open source API die ontwikkeld is voor mijn vak development en mijn e
 - Als dit in orde is hoef je in de terminal enkel docker-compose up in te geven.
 - Via een programma zoals Tableplus kan je de database live bekijken.
 - Als je index.html opent in jouw browser krijg je de website te zien.
+- Je kan de ingediende forumlieren ook bekijken op http://localhost:3000/get/:alleVragen
 
 ### Endpoints
 - Create: /post/formulier (Via het forumulier kan je vragen, problemen en dankwoorden invoegen)
@@ -16,7 +17,8 @@ Dit is een open source API die ontwikkeld is voor mijn vak development en mijn e
 - Delete: /delete/:id (Eenvoudig een ingezonden formulier verwijderen via id)
 
 ### Tests
-Endpoints: Testen of de verschillend endpoints werken.
+- Endpoints: Testen of de verschillende endpoints werken.
+- Unit tests: Testen of de email valid is.
 
 ### Running the tests
 - Ga naar de api map

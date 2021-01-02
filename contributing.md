@@ -39,6 +39,7 @@ expected log levels:
 - Als dit in orde is hoef je in de terminal enkel docker-compose up in te geven.
 - Via een programma zoals Tableplus kan je de database live bekijken.
 - Als je index.html opent in jouw browser krijg je de website te zien.
+- Je kan de ingediende formulieren ook bekijken op http://localhost:3000/get/:alleVragen
 
 ## Get in touch
 U kan me altijd bereieken op peeters.kelly@outlook.com.

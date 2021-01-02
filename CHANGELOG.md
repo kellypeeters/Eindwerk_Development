@@ -36,4 +36,9 @@ Alle opmerkelijke wijzigingen aan dit project zullen in dit bestand gedocumentee
 - Readme file
 - Database.test.js (connectie tests verwijderd)
 - Mappenstructuur aangepast
-- Jquery toegevoegd
+- Jquery toegevoegd## [1.1.1] - 2021-01-01
+
+## [1.1.2] - 2021-01-02
+
+### Added
+- Unit tests toegevoegd om email te testen
