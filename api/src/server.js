@@ -120,7 +120,6 @@ async function initialiseTables() {
       await pg.schema
         .createTable('vragen', (table) => {
           table.increments();
-          table.integer('categoriesoort_id');
           table.string('categoriesoort');
           table.string('voornaam');
           table.string('achternaam');
@@ -130,7 +129,7 @@ async function initialiseTables() {
         })
         .then(async () => {
           console.log('created table vragen');
-            await pg.table('vragen').insert({ categoriesoort_id, categoriesoort, voornaam, achternaam, email, bericht, volgorde: `${i}`})
+            await pg.table('vragen').insert({ categoriesoort, voornaam, achternaam, email, bericht})
       });
     }
   });
