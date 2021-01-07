@@ -36,6 +36,35 @@ describe('GET / endpoint', () => {
     done()
     } 
 })
+    test('check if gets categorie responds with 200 and gets the correct rows when passing a categoriesoort', async (done) => {
+        try {
+            await request.get('/categorie')
+                .send({
+                    categoriesoort: "Dankwoord"
+                 })
+                .expect(200)
+                .then((res) => {
+                    done()
+                });
+        } catch (e) {
+            if (e) console.log(e);
+            done(e)
+        }
+    });
+
+    test('check if gets categorie responds with 400 when send without categoriesoort', async (done) => {
+        try {
+            await request.get('/categorie')
+                .send({})
+                .expect(400)
+                .then((res) => {
+                    done()
+                });
+        } catch (e) {
+            if (e) console.log(e);
+            done(e)
+        }
+    });
 });
 
 /**

@@ -77,6 +77,16 @@ async function initialiseTables() {
   });
 }
 
+/*app.get('/join', async (req, res) => {
+  await DatabaseHelper
+    .table('items')
+    .join('lists', DatabaseHelper.raw('item.list_id::varchar'), DatabaseHelper.raw('lists.uuid::varchar'))
+    .select('lists.*', 'items.*')
+    .then((data) => {
+      res.send(data)
+    })
+})*/
+
 app.get('/alleVragen', async (req, res) => {
   const result = await pg
     .select(['categoriesoort', 'voornaam', 'achternaam', 'email', 'bericht'])
@@ -84,6 +94,23 @@ app.get('/alleVragen', async (req, res) => {
     console.log("De vragen in de database zijn " + (JSON.stringify(result)));
   res.json({
       res: result 
+  })
+})
+
+app.get('/categorie', async (req, res) => {
+
+  if (!req.body.categoriesoort) {
+    return res.status(400).send({'message': 'Categorie is missing'});
+  }
+
+  const result = await pg
+  .select(['voornaam', 'achternaam', 'email', 'bericht'])
+  .from('vragen')
+    .where({
+      categoriesoort: req.body.categoriesoort
+    })
+  res.json({
+    res: result
   })
 })
 
