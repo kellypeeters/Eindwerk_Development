@@ -76,7 +76,7 @@ async function initialiseTables() {
   });
 }
 
-app.get('/get/:alleVragen', async (req, res) => {
+app.get('/alleVragen', async (req, res) => {
   const result = await pg
     .select(['categoriesoort', 'voornaam', 'achternaam', 'email', 'bericht'])
     .from('vragen')
@@ -86,28 +86,11 @@ app.get('/get/:alleVragen', async (req, res) => {
   })
 })
 
-/*app.post('/post/formulier', (req, res) => {
-  console.log('start inserquote route');
-    const categoriesoort = req.body.categoriesoort;
-    const voornaam = req.body.voornaam;
-    const achternaam = req.body.achternaam;
-    const email = req.body.email;
-    const bericht = req.body.bericht;
+app.post('/formulier', async (req, res) => {
 
-    client.query(
-    `INSERT INTO vragen categoriesoort = $1, voornaam = $2, achternaam = $3, email = $4, bericht = $5`,
-    [categoriesoort, voornaam, achternaam, email, bericht],
-    (error) => {
-      if (error) {   
-        throw error
-      }
-      console.log("posted data " + categoriesoort);
-      res.status(200).json({status: 'success', message: 'post goed gelukt'})
-    }, 
-  )
-});*/
-
-app.post('/post/formulier', async (req, res) => {
+  if (!req.body.categoriesoort || !req.body.voornaam || !req.body.achternaam || !req.body.email || !req.body.bericht) {
+    return res.status(400).send({'message': 'Some values are missing'});
+  }
 
   const {categoriesoort, voornaam, achternaam, email, bericht} = req.body
 
@@ -124,7 +107,11 @@ app.post('/post/formulier', async (req, res) => {
   )
 }) 
 
-app.delete('/delete/:id', async (req, res) => {
+app.delete('/id', async (req, res) => {
+
+  if (!req.body.id) {
+    return res.status(400).send({'message': 'Id is missing'});
+  }
 
   client.query(
    `DELETE FROM vragen WHERE id=$1`,
@@ -139,7 +126,12 @@ app.delete('/delete/:id', async (req, res) => {
  )
 });
 
-app.patch('/update/:id', (req, res) => {
+app.patch('/id', (req, res) => {
+
+  if (!req.body.id) {
+    return res.status(400).send({'message': 'Id is missing'});
+  }
+  
   client.query(
     `UPDATE vragen SET categoriesoort = $1, voornaam = $2, achternaam = $3, email = $4, bericht = $5, updated_at = CURRENT_TIMESTAMP WHERE id = $6`,
     [req.body.categoriesoort, req.body.voornaam, req.body.achternaam, req.body.email, req.body.bericht, req.body.id],
