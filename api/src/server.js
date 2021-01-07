@@ -60,6 +60,7 @@ async function initialiseTables() {
 
     }
   });
+  
   await pg.schema.hasTable('categorie').then(async (exists) => {
     if (!exists) {
       await pg.schema
@@ -131,7 +132,7 @@ app.patch('/id', (req, res) => {
   if (!req.body.id) {
     return res.status(400).send({'message': 'Id is missing'});
   }
-  
+
   client.query(
     `UPDATE vragen SET categoriesoort = $1, voornaam = $2, achternaam = $3, email = $4, bericht = $5, updated_at = CURRENT_TIMESTAMP WHERE id = $6`,
     [req.body.categoriesoort, req.body.voornaam, req.body.achternaam, req.body.email, req.body.bericht, req.body.id],

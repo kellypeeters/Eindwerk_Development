@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 const supertest = require('supertest');
-const app = require('./../server.js');
-const app2 = require('./../../html/contact.js');
+const app = require('../server.js');
+const app2 = require('../../html/contact.js');
 
  const request = supertest(app);
 
@@ -69,6 +69,11 @@ describe('POST /test endpoint', () => {
         }
     })
 
+/**
+* [Post een leeg formulier]
+* @param: niets
+* @returns: error
+*/
     test('check if it responds with 400 when sent without data', async (done) => {
         try{
             await request.post('/formulier')
@@ -86,7 +91,7 @@ describe('POST /test endpoint', () => {
 });
 
 /**
-* [Post een formulier]
+* [Delete een formulier]
 * @param: {number} id
 * @returns: row verwijderd uit database
 */
@@ -109,6 +114,11 @@ describe(' DELETE /test endpoint', () => {
         }
     })
 
+/**
+* [Delete een formulier zonder id]
+* @param: niets
+* @returns: error
+*/
     test('check if it responds with 400 when sent without data', async (done) => {
         try{
             await request.delete('/id')
@@ -125,6 +135,11 @@ describe(' DELETE /test endpoint', () => {
     })
 });
 
+/**
+* [Update een formulier]
+* @param: {number} id
+* @returns: row geupdate in database
+*/
 describe(' UPDATE /test endpoint', () => {
 
     test('UPDATE gegevens van gebruiker met id 2', async done => {
@@ -149,6 +164,11 @@ describe(' UPDATE /test endpoint', () => {
         }
     })
     
+/**
+* [Update een formulier zonder id]
+* @param: niets
+* @returns: error
+*/
     test('check if it responds with 400 when sent without data', async (done) => {
         try{
             await request.patch('/id')
@@ -161,6 +181,6 @@ describe(' UPDATE /test endpoint', () => {
         } catch(e){
         if(e) console.log(e); done(e)
         done()
-        }
+        }  
     })
 });
