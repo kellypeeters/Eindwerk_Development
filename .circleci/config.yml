@@ -1,26 +1,12 @@
-version: 2
+  
+version: 2.1
 
 jobs:
-  build: 
-    docker: 
+  build:
+    docker:
       - image: circleci/node:12.18
-        environment: 
-            POSTGRES_PASSWORD: example
-            POSTGRES_USER: example
-            POSTGRES_DB: test
-            POSTGRES_HOST_AUTH_METHOD: trust
+
     steps:
       - checkout
-      - run:
-          name: Install local dependencies
-          command: npm install
-
-      - run:
-          name: Wait for Postgres to start
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
-      - run:
-          name: Create database
-          command: npm run db:reset:test
       - run: cd api && npm ci
-      - run: cd api && npm test
+      - run: cd api && npm run test-ci

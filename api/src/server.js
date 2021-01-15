@@ -135,6 +135,16 @@ app.post('/formulier', async (req, res) => {
   )
 }) 
 
+app.get('/join', async (req, res) => {
+  await DatabaseHelper
+    .table('vragen')
+    .join('categorie', DatabaseHelper.raw('categorie.categoriesoort_id::varchar'))
+    .select('categorie.*', 'vragen.*')
+    .then((data) => {
+      res.send(data)
+    })
+})
+
 app.delete('/id', async (req, res) => {
 
   if (!req.body.id) {
