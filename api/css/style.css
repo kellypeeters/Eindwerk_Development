@@ -1,75 +1,82 @@
-h1{
+h1 {
 	padding: 2%;
-    margin-top: 0;
-    font-size: 30px;
+	margin-top: 0;
+	font-size: 30px;
 	color: white;
 }
 
-#form{
-	height: 100%;	
+#form {
+	height: 100%;
 	overflow: hidden;
 	position: relative;
 }
 
-form{
+form {
 	margin: 0 auto;
 	width: 500px;
 	padding-top: 40px;
 	color: #FFB347;
-	position: relative;	
+	position: relative;
 	margin-bottom: 10%;
 }
 
-label, input, textarea, select{
-	display: block;	
+label,
+input,
+textarea,
+select {
+	display: block;
 }
 
-input, textarea, select{
+input,
+textarea,
+select {
 	margin-top: 20px;
-	width: 90%;	
+	width: 90%;
 	border-radius: 17px;
 	padding: 10px;
 	font-size: 1em;
 	color: #D3D3D3;
-	border: solid 3px #FFB347;	
+	border: solid 3px #FFB347;
 }
 
-input{
+input {
 	color: #141d2b;
 }
 
-.SpeelButton{
+.SpeelButton {
 	margin-top: 30%;
 	margin-left: 30%;
-	border-color:  #009EE2;
+	border-color: #009EE2;
 	border-radius: 17px;
 	padding: 8px;
 	font-size: 1em;
 	color: #ffffff;
 	border: solid 3px #009EE2;
-	background-color: transparent;	
+	background-color: transparent;
 }
 
 
-input:focus, textarea:focus, select:focus{
-	border: solid 3px #77bde0;	
+input:focus,
+textarea:focus,
+select:focus {
+	border: solid 3px #77bde0;
 }
 
-textarea{
+textarea {
 	color: #141d2b;
-	height: 100px;	
-	resize: none; 
+	height: 100px;
+	resize: none;
 	overflow: auto;
 }
 
-select{
-	width: 96%;	
+select {
+	width: 96%;
 	color: #141d2b;
 }
 
-input[type="submit"]{
-    width: 96%;	
-    border: solid 3px #e58f0e;	
+input[type="submit"] {
+	width: 96%;
+	border: solid 3px #e58f0e;
 	background-color: #ff952b;
 	color: white;
 	height: 50px;
@@ -77,12 +84,12 @@ input[type="submit"]{
 	margin-top: 5%;
 }
 
-input[type="submit"]:hover{
-	border: solid 3px #e58f0e;	
+input[type="submit"]:hover {
+	border: solid 3px #e58f0e;
 	background-color: #e58f0e;
 }
 
-label{
+label {
 	margin-top: 2%;
 }
 
@@ -93,41 +100,42 @@ label{
 	width: 100%;
 }
 
-.MeerInformatie{
+.MeerInformatie {
 	margin-top: 7%;
 }
 
-.MeerInformatie1{
-	float:left;  
-	width:33%; 
-	height:280px; 
-	border-right: 1px solid #009EE2;    
+.MeerInformatie1 {
+	float: left;
+	width: 33%;
+	height: 280px;
+	border-right: 1px solid #009EE2;
 }
 
-.MeerInformatie2{
-	float:left;  
-	width:33%; 
-	height:280px;  
-	border-right: 1px solid #009EE2;   
+.MeerInformatie2 {
+	float: left;
+	width: 33%;
+	height: 280px;
+	border-right: 1px solid #009EE2;
 }
 
-.MeerInformatie3{
-	float:right; 
-	width:33%; 
-	height:280px;  
+.MeerInformatie3 {
+	float: right;
+	width: 33%;
+	height: 280px;
 }
 
-.Procent{
+.Procent {
 	color: #009EE2;
 	font-size: 30px;
 	text-align: center;
 }
 
-.Uitleg, .MeerInformatie4{
+.Uitleg,
+.MeerInformatie4 {
 	text-align: center;
 }
 
-#IngeleverdeForms{
+#IngeleverdeForms {
 	margin-top: 50%;
 	margin-bottom: 30%;
 }

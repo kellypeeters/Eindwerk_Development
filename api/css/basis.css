@@ -1,50 +1,50 @@
-*{
+* {
     font-family: 'Lilly', sans-serif;
 }
 
-.Header{
+.Header {
     background-color: #FFB347;
 }
 
-.Menu{
-        background-color: white;
-        text-align: right;
-        padding-top: 1%;
-        padding-bottom: 1%;
-        padding-right: 8%;
-        margin-top: 2%;
-        margin-right: 10%;
-        margin-left: 10%;
-} 
+.Menu {
+    background-color: white;
+    text-align: right;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-right: 8%;
+    margin-top: 2%;
+    margin-right: 10%;
+    margin-left: 10%;
+}
 
-.Titel{
+.Titel {
     font-size: 30px;
     padding-right: 50%;
-	color: #FFB347;
+    color: #FFB347;
 }
-    
-.Menu a{
+
+.Menu a {
     text-decoration: none;
     color: black;
     padding-left: 6%;
 }
 
-a:hover{
+a:hover {
     color: #ADD8E6;
 }
 
-footer{
+footer {
     padding-top: 1%;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     color: white;
-    text-align: center;    
+    text-align: center;
     background-color: #282828;
 }
 
-footer a{
+footer a {
     padding-left: 1%;
     padding-right: 1%;
 }
