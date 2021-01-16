@@ -44,11 +44,11 @@ describe('GET / endpoint', () => {
         }
     })
 
-/**
- * [Get alle ingediende formulieren van bepaalde categoriesoort]
- * @param: {string} categoriesoort
- * @returns: Alle vragen met bepaalde categoriesoort (json, status 200 ok)
- */
+    /**
+     * [Get alle ingediende formulieren van bepaalde categoriesoort]
+     * @param: {string} categoriesoort
+     * @returns: Alle vragen met bepaalde categoriesoort (json, status 200 ok)
+     */
     test('check if gets categorie responds with 200 and gets the correct rows when passing a categoriesoort', async (done) => {
         try {
             await request.get("/categorie/" + categoriesoort)
@@ -65,11 +65,11 @@ describe('GET / endpoint', () => {
         }
     });
 
-/**
- *[Get ingediende formulieren van bepaalde categoriesoort zonder soort mee te geven]
- * @param: /
- * @returns: error (status 400 bad request)
- */
+    /**
+     *[Get ingediende formulieren van bepaalde categoriesoort zonder soort mee te geven]
+     * @param: /
+     * @returns: error (status 400 bad request)
+     */
     test('check if gets categorie responds with 400 when send without categoriesoort', async (done) => {
         try {
             await request.get("/categorie/" + categoriesoort)
@@ -177,7 +177,7 @@ describe('POST /test endpoint', () => {
  * @returns: row verwijderd uit database (status: 200 ok)
  */
 describe(' DELETE /test endpoint', () => {
-    let id; 
+    let id;
 
     test('check if it responds with 200, if it deleted the object', async (done) => {
         try {
@@ -209,7 +209,7 @@ describe(' DELETE /test endpoint', () => {
                 .expect(400)
                 .then((res) => {
                     console.log('Delete niet gelukt');
-                    done() 
+                    done()
                 });
         } catch (e) {
             if (e) console.log(e);
@@ -225,24 +225,24 @@ describe(' DELETE /test endpoint', () => {
  * @returns: row geupdate in database (status: 200 OK)
  */
 describe(' UPDATE /test endpoint', () => {
-let id; 
+    let id;
 
-test("responds with 200 if ticket is updated", async (done) => {
-    try {
-      const response = await request
-        .patch("/updateVraag/" + id)
-        .send({
-            categoriesoort: "Probleem",
-            voornaam: "Test via update",
-            achternaam: "Test via update",
-            email: "test@test.be",
-            bericht: "Test via update",
-            id: "55"
-        })
-      expect(response.status).toBe(200);
-      done();
-    } catch (error) {}
-  })
+    test("responds with 200 if ticket is updated", async (done) => {
+        try {
+            const response = await request
+                .patch("/updateVraag/" + id)
+                .send({
+                    categoriesoort: "Probleem",
+                    voornaam: "Test via update",
+                    achternaam: "Test via update",
+                    email: "test@test.be",
+                    bericht: "Test via update",
+                    id: "55"
+                })
+            expect(response.status).toBe(200);
+            done();
+        } catch (error) {}
+    })
 
     /**
      * [Update een formulier zonder id]
@@ -251,13 +251,13 @@ test("responds with 200 if ticket is updated", async (done) => {
      */
     test('check if it responds with 400 when sent without data', async (done) => {
         try {
-          const response = await request
-            .patch("/updateVraag/" + id)
-            .send([])
-            .expect(400)
-            .then((res) => {
-                console.log('Update niet gelukt');
-                done()
+            const response = await request
+                .patch("/updateVraag/" + id)
+                .send([])
+                .expect(400)
+                .then((res) => {
+                    console.log('Update niet gelukt');
+                    done()
                 });
         } catch (e) {
             if (e) console.log(e);

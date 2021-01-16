@@ -33,7 +33,6 @@
     "testPathIgnorePatterns": [
       "/src/__tests__/integration/",
       "/node_modules/"
-    ], 
-      "setupFiles": ["./setup-jest.js"]
+    ]
   }
 }
