@@ -3,7 +3,7 @@ const {
 } = require('pg');
 const supertest = require('supertest');
 const app = require('../server.js');
-const app2 = require('../../html/contact.js');
+
 const {
     send
 } = require('process');
@@ -24,8 +24,8 @@ afterAll(async () => {
 
 /**
  * [Get alle ingediende formulieren]
- * @param: 
- * @returns:
+ * @param: /
+ * @returns: Alle vragen (json, status 200 ok)
  */
 describe('GET / endpoint', () => {
     let categoriesoort;
@@ -43,6 +43,12 @@ describe('GET / endpoint', () => {
             done()
         }
     })
+
+/**
+ * [Get alle ingediende formulieren van bepaalde categoriesoort]
+ * @param: {string} categoriesoort
+ * @returns: Alle vragen met bepaalde categoriesoort (json, status 200 ok)
+ */
     test('check if gets categorie responds with 200 and gets the correct rows when passing a categoriesoort', async (done) => {
         try {
             await request.get("/categorie/" + categoriesoort)
@@ -59,6 +65,11 @@ describe('GET / endpoint', () => {
         }
     });
 
+/**
+ *[Get ingediende formulieren van bepaalde categoriesoort zonder soort mee te geven]
+ * @param: /
+ * @returns: error (status 400 bad request)
+ */
     test('check if gets categorie responds with 400 when send without categoriesoort', async (done) => {
         try {
             await request.get("/categorie/" + categoriesoort)
@@ -75,13 +86,29 @@ describe('GET / endpoint', () => {
 });
 
 /**
+ * [Get alle ingediende formulieren van bepaalde categoriesoort]
+ * @param: {string} categoriesoort
+ * @returns: Alle vragen met bepaalde categoriesoort (json, status 200 ok)
+ */
+describe('GET alle endpoints', () => {
+    test('/join returns data', async (next) => {
+        try {
+            const response = await request.get('/join');
+            expect(response.status).toBe(200);
+            expect(response.body).toBeDefined();
+            next();
+        } catch (e) {}
+    });
+});
+
+/**
  * [Post een formulier]
  * @param: {string} categoriesoort
  * @param: {string} voornaam
  * @param: {string} achternaam
  * @param: {string} email
  * @param: {string} bericht
- * @returns: row toegevoegd in database
+ * @returns: row toegevoegd in database (status: 200 ok)
  */
 describe('POST /test endpoint', () => {
     test('check if it responds with 201, if it got object', async (done) => {
@@ -109,7 +136,7 @@ describe('POST /test endpoint', () => {
     /**
      * [Post een leeg formulier]
      * @param: niets
-     * @returns: error
+     * @returns: error (status: 400 bad request)
      */
     test('check if it responds with 400 when sent without data', async (done) => {
         try {
@@ -131,13 +158,14 @@ describe('POST /test endpoint', () => {
 /**
  * [Delete een formulier]
  * @param: {number} id
- * @returns: row verwijderd uit database
+ * @returns: row verwijderd uit database (status: 200 ok)
  */
 describe(' DELETE /test endpoint', () => {
+    let id;
 
     test('check if it responds with 200, if it deleted the object', async (done) => {
         try {
-            await request.delete('/id')
+            await request.delete(`/deleteVraag/${id}`)
                 .send({
                     id: '4'
                 })
@@ -156,11 +184,11 @@ describe(' DELETE /test endpoint', () => {
     /**
      * [Delete een formulier zonder id]
      * @param: niets
-     * @returns: error
+     * @returns: error (status: 400 bad request)
      */
     test('check if it responds with 400 when sent without data', async (done) => {
         try {
-            await request.delete('/id')
+            await request.delete(`/deleteVraag/${id}`)
                 .send([])
                 .expect(400)
                 .then((res) => {
@@ -178,47 +206,42 @@ describe(' DELETE /test endpoint', () => {
 /**
  * [Update een formulier]
  * @param: {number} id
- * @returns: row geupdate in database
+ * @returns: row geupdate in database (status: 200 OK)
  */
 describe(' UPDATE /test endpoint', () => {
-    let id;
+let id; 
 
-    test('UPDATE gegevens van gebruiker met id 2', async done => {
-        try {
-            await request.patch(`/updateVraag/${id}`)
-                .send({
-                    categoriesoort: "Probleem",
-                    voornaam: "Test via update",
-                    achternaam: "Test via update",
-                    email: "test@test.be",
-                    bericht: "Test via update",
-                    id: "2"
-                })
-                .expect(200)
-                .then((res) => {
-                    done()
-                    console.log('updated');
-                });
-        } catch (e) {
-            if (e) console.log(e);
-            done(e)
-            done()
-        }
-    })
+test("responds with 200 if ticket is updated", async (done) => {
+    try {
+      const response = await request
+        .patch("/updateVraag/" + id)
+        .send({
+            categoriesoort: "Probleem",
+            voornaam: "Test via update",
+            achternaam: "Test via update",
+            email: "test@test.be",
+            bericht: "Test via update",
+            id: "55"
+        })
+      expect(response.status).toBe(200);
+      done();
+    } catch (error) {}
+  })
 
     /**
      * [Update een formulier zonder id]
      * @param: niets
-     * @returns: error
+     * @returns: error (status: 400 bad request)
      */
     test('check if it responds with 400 when sent without data', async (done) => {
         try {
-            await request.patch(`/updateVraag/${id}`)
-                .send([])
-                .expect(400)
-                .then((res) => {
-                    console.log('Update niet gelukt');
-                    done()
+          const response = await request
+            .patch("/updateVraag/" + id)
+            .send([])
+            .expect(400)
+            .then((res) => {
+                console.log('Update niet gelukt');
+                done()
                 });
         } catch (e) {
             if (e) console.log(e);

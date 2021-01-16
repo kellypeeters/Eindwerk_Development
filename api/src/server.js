@@ -7,6 +7,7 @@ const {
 
 const port = 3000
 
+// Connectie maken met de database
 const pg = require('knex')({
   client: 'pg',
   version: '9.6',
@@ -39,6 +40,11 @@ app.get('/test', (req, res) => {
   res.status(200).send();
 });
 
+/**
+ * [Initialiseer tables als deze nog niet bestaan]
+ * @param: /
+ * @returns: /
+ */
 async function initialiseTables() {
   await pg.schema.hasTable('vragen').then(async (exists) => {
     if (!exists) {
@@ -83,18 +89,13 @@ async function initialiseTables() {
         });
     }
   });
-}
+} 
 
-/*app.get('/join', async (req, res) => {
-  await DatabaseHelper
-    .table('items')
-    .join('lists', DatabaseHelper.raw('item.list_id::varchar'), DatabaseHelper.raw('lists.uuid::varchar'))
-    .select('lists.*', 'items.*')
-    .then((data) => {
-      res.send(data)
-    })
-})*/
-
+/**
+ * [Get alle ingediende formulieren]
+ * @param: /
+ * @returns: Alle vragen (json, status 200 ok)
+ */
 app.get('/alleVragen', async (req, res) => {
   const result = await pg
     .select(['categoriesoort', 'voornaam', 'achternaam', 'email', 'bericht'])
@@ -105,6 +106,11 @@ app.get('/alleVragen', async (req, res) => {
   })
 })
 
+/**
+ * [Get alle ingediende formulieren van bepaalde categoriesoort]
+ * @param: {string} categoriesoort
+ * @returns: Alle vragen met bepaalde categoriesoort (json, status 200 ok) of error (status 400 bad request)
+ */
 app.get('/categorie/:categoriesoort', async (req, res) => {
 
   if (!req.body.categoriesoort) {
@@ -124,6 +130,15 @@ app.get('/categorie/:categoriesoort', async (req, res) => {
   })
 })
 
+/**
+ * [Post een formulier]
+ * @param: {string} categoriesoort
+ * @param: {string} voornaam
+ * @param: {string} achternaam
+ * @param: {string} email
+ * @param: {string} bericht
+ * @returns: row toegevoegd in database (status: 200 ok) of error (status 400 bad request)
+ */
 app.post('/formulier', async (req, res) => {
 
   if (!req.body.categoriesoort || !req.body.voornaam || !req.body.achternaam || !req.body.email || !req.body.bericht) {
@@ -156,17 +171,30 @@ app.post('/formulier', async (req, res) => {
   )
 })
 
+/**
+ * [Get data van beide tables]
+ * @param: /
+ * @returns: get alle ingediende formulieren met categoriestoorten met data id, categoriesoort, tijd en bericht (status: 200 ok of status: 400 bad request)
+ */
 app.get('/join', async (req, res) => {
-  await DatabaseHelper
-    .table('vragen')
-    .join('categorie', DatabaseHelper.raw('categorie.categoriesoort_id::varchar'))
-    .select('categorie.*', 'vragen.*')
-    .then((data) => {
-      res.send(data)
+  await pg
+    .from('vragen')
+    .join('categorie', 'vragen.categoriesoort', 'categorie.categoriesoort')
+    .select(['vragen.id', 'categorie.categoriesoort', 'vragen.created_at', 'vragen.bericht'])
+    .then(data => {
+      res.json({
+        res: data
+      });
+      console.log(data);
     })
-})
+});
 
-app.delete('/id', async (req, res) => {
+/**
+ * [Delete een formulier]
+ * @param: {number} id
+ * @returns: row verwijderd uit database (status: 200 ok) of (status: 400 bad request)
+ */
+app.delete('/deleteVraag/:id', async (req, res) => {
 
   if (!req.body.id) {
     return res.status(400).send({
@@ -190,7 +218,12 @@ app.delete('/id', async (req, res) => {
   )
 });
 
-app.patch('/updateVraag/:id', (req, res) => {
+/**
+ * [Update een formulier]
+ * @param: {number} id
+ * @returns: row geupdate in database (status: 200 OK) of (status: 400 bad request)
+ */
+app.patch("/updateVraag/:id", (req, res) => {
 
   if (!req.body.id) {
     return res.status(400).send({

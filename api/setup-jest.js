@@ -1,2 +1,1 @@
-global.window = window
-global.$ = require('jquery');
+jest.setTimeout(30000)
