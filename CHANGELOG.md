@@ -45,4 +45,13 @@ Alle opmerkelijke wijzigingen aan dit project zullen in dit bestand gedocumentee
  ## [1.1.3] - 2021-01-07
 
  ### Added
-- Endpoints tests met response 400
+- Endpoints failing tests toegevoegd
+
+### Changed
+- Endpoints notatie veranderd /get/vragenPerCategorie naar /getVragenPerCategorie:id
+
+## [1.1.3] - 2021-01-07
+
+ ### Added
+- 2 get endpoints toegevoegd die data uit beide tables haalt
+- Inline documentatie toegevoegd  

@@ -2,7 +2,7 @@ const {
     Pool
 } = require('pg');
 const supertest = require('supertest');
-const app = require('../server.js');
+const app = require('../../server.js');
 
 const {
     send
