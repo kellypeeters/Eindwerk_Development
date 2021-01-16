@@ -100,11 +100,11 @@ app.get('/alleVragen', async (req, res) => {
   const result = await pg
     .select(['categoriesoort', 'voornaam', 'achternaam', 'email', 'bericht'])
     .from('vragen')
-  console.log("De vragen in de database zijn " + (JSON.stringify(result)));
+  //console.log("De vragen in de database zijn " + (JSON.stringify(result)));
   res.json({
     res: result
   })
-})
+}) 
 
 /**
  * [Get alle ingediende formulieren van bepaalde categoriesoort]
@@ -128,6 +128,7 @@ app.get('/categorie/:categoriesoort', async (req, res) => {
   res.json({
     res: result
   })
+  console.log(result);
 })
 
 /**
@@ -180,12 +181,28 @@ app.get('/join', async (req, res) => {
   await pg
     .from('vragen')
     .join('categorie', 'vragen.categoriesoort', 'categorie.categoriesoort')
-    .select(['vragen.id', 'categorie.categoriesoort', 'vragen.created_at', 'vragen.bericht'])
+    .select(['vragen.id', 'categorie.categoriesoort_id', 'categorie.categoriesoort', 'vragen.created_at', 'vragen.bericht'])
     .then(data => {
       res.json({
         res: data
       });
-      console.log(data);
+    })
+});
+
+/**
+ * [Get data van beide tables]
+ * @param: /
+ * @returns: get alle ingediende formulieren met categoriestoorten met data id, categoriesoort, tijd en bericht (status: 200 ok of status: 400 bad request)
+ */
+app.get('/joinAlles', async (req, res) => {
+  await pg
+    .from('vragen')
+    .join('categorie', 'vragen.categoriesoort', 'categorie.categoriesoort')
+    .select('vragen.*', 'categorie.*')
+    .then(data => {
+      res.json({
+        res: data
+      });
     })
 });
 

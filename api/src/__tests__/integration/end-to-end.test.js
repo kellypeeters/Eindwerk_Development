@@ -29,7 +29,7 @@ afterAll(async () => {
  * @returns: row geupdate in database (status: 200 ok)
  */
 describe('UPDATE /updateVraag/:id', () => {
-    let id; 
+    let id;
     it("updates een vraag", async (done) => {
         try {
             const response = await request
@@ -45,5 +45,13 @@ describe('UPDATE /updateVraag/:id', () => {
                 .expect(response.status).toBe(200)
                 .done();
         } catch (error) {}
+    });
+
+    test('updates een vraag zonder id', async (next) => {
+        try {
+            const response = await request.get("/updateVraag/" + id);
+            expect(response.status).toBe(400);
+            next();
+        } catch (e) {}
     });
 });

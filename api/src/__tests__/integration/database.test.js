@@ -86,14 +86,30 @@ describe('GET / endpoint', () => {
 });
 
 /**
- * [Get alle ingediende formulieren van bepaalde categoriesoort]
- * @param: {string} categoriesoort
- * @returns: Alle vragen met bepaalde categoriesoort (json, status 200 ok)
+ * [Get bepaalde data uit beide tables]
+ * @param: /
+ * @returns: Bepaalde data uit de tables (json, status 200 ok)
  */
-describe('GET alle endpoints', () => {
-    test('/join returns data', async (next) => {
+describe('GET bepaalde endpoints', () => {
+    test('/join returns data van beide tables', async (next) => {
         try {
             const response = await request.get('/join');
+            expect(response.status).toBe(200);
+            expect(response.body).toBeDefined();
+            next();
+        } catch (e) {}
+    });
+});
+
+/**
+ * [Get alle ingediende formulieren en alle data uit table categorie]
+ * @param: /
+ * @returns: Alle data uit de tables (json, status 200 ok)
+ */
+describe('GET alle endpoints', () => {
+    test('/join returns alle data van beide tables', async (next) => {
+        try {
+            const response = await request.get('/joinAlles');
             expect(response.status).toBe(200);
             expect(response.body).toBeDefined();
             next();
@@ -161,11 +177,11 @@ describe('POST /test endpoint', () => {
  * @returns: row verwijderd uit database (status: 200 ok)
  */
 describe(' DELETE /test endpoint', () => {
-    let id;
+    let id; 
 
     test('check if it responds with 200, if it deleted the object', async (done) => {
         try {
-            await request.delete(`/deleteVraag/${id}`)
+            await request.delete('/deleteVraag/' + id)
                 .send({
                     id: '4'
                 })
@@ -188,7 +204,7 @@ describe(' DELETE /test endpoint', () => {
      */
     test('check if it responds with 400 when sent without data', async (done) => {
         try {
-            await request.delete(`/deleteVraag/${id}`)
+            await request.delete('/deleteVraag/' + id)
                 .send([])
                 .expect(400)
                 .then((res) => {
