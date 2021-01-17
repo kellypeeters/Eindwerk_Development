@@ -126,7 +126,7 @@ describe('GET alle endpoints', () => {
  * @param: {string} bericht
  * @returns: row toegevoegd in database (status: 200 ok)
  */
-describe('POST /test endpoint', () => {
+/*describe('POST /test endpoint', () => {
     test('check if it responds with 201, if it got object', async (done) => {
         try {
             await request.post('/formulier')
@@ -147,14 +147,14 @@ describe('POST /test endpoint', () => {
             done(e)
             done()
         }
-    })
+    })*/
 
     /**
      * [Post een leeg formulier]
      * @param: niets
      * @returns: error (status: 400 bad request)
      */
-    test('check if it responds with 400 when sent without data', async (done) => {
+    /*test('check if it responds with 400 when sent without data', async (done) => {
         try {
             await request.post('/formulier')
                 .send([])
@@ -169,14 +169,14 @@ describe('POST /test endpoint', () => {
             done()
         }
     })
-});
+});*/
 
 /**
  * [Delete een formulier]
  * @param: {number} id
  * @returns: row verwijderd uit database (status: 200 ok)
  */
-describe(' DELETE /test endpoint', () => {
+/*describe(' DELETE /test endpoint', () => {
     let id;
 
     test('check if it responds with 200, if it deleted the object', async (done) => {
@@ -195,14 +195,14 @@ describe(' DELETE /test endpoint', () => {
             done(e)
             done()
         }
-    })
+    })*/
 
     /**
      * [Delete een formulier zonder id]
      * @param: niets
      * @returns: error (status: 400 bad request)
      */
-    test('check if it responds with 400 when sent without data', async (done) => {
+    /*test('check if it responds with 400 when sent without data', async (done) => {
         try {
             await request.delete('/deleteVraag/' + id)
                 .send([])
@@ -217,14 +217,14 @@ describe(' DELETE /test endpoint', () => {
             done()
         }
     })
-});
+});*/
 
 /**
  * [Update een formulier]
  * @param: {number} id
  * @returns: row geupdate in database (status: 200 OK)
  */
-describe(' UPDATE /test endpoint', () => {
+/*describe(' UPDATE /test endpoint', () => {
     let id;
 
     test("responds with 200 if ticket is updated", async (done) => {
@@ -242,14 +242,14 @@ describe(' UPDATE /test endpoint', () => {
             expect(response.status).toBe(200);
             done();
         } catch (error) {}
-    })
+    })*/
 
     /**
      * [Update een formulier zonder id]
      * @param: niets
      * @returns: error (status: 400 bad request)
      */
-    test('check if it responds with 400 when sent without data', async (done) => {
+    /*test('check if it responds with 400 when sent without data', async (done) => {
         try {
             const response = await request
                 .patch("/updateVraag/" + id)
@@ -265,4 +265,4 @@ describe(' UPDATE /test endpoint', () => {
             done()
         }
     })
-});
+});*/
