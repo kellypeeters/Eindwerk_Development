@@ -89,7 +89,7 @@ async function initialiseTables() {
         });
     }
   });
-} 
+}
 
 /**
  * [Get alle ingediende formulieren]
@@ -104,7 +104,7 @@ app.get('/alleVragen', async (req, res) => {
   res.json({
     res: result
   })
-}) 
+})
 
 /**
  * [Get alle ingediende formulieren van bepaalde categoriesoort]

@@ -55,3 +55,6 @@ Alle opmerkelijke wijzigingen aan dit project zullen in dit bestand gedocumentee
  ### Added
 - 2 get endpoints toegevoegd die data uit beide tables haalt
 - Inline documentatie toegevoegd  
+  
+### Changed
+- Tests verplaatst naar integration folder, zodat circli werkt
