@@ -39,7 +39,7 @@ describe('end-to-end test', () => {
             const response = await request
                 .post("/formulier")
                 .send({
-                    categoriesoort: "Technische fout",
+                    categoriesoort: "Probleem",
                     voornaam: "Kelly",
                     achternaam: "Peeters",
                     email: "kelly@outlook.com",
@@ -57,9 +57,14 @@ describe('end-to-end test', () => {
      */
     it('post een vraag zonder data', async (next) => {
         try {
-            const response = await request.get("/formulier");
-            expect(response.status).toBe(400);
-            next();
+            const response = await request
+            .get("/formulier")
+            .then((res) => {
+                done()
+                console.log('Post niet gelukt')
+            })
+            .expect(response.status).toBe(400)
+            .next()
         } catch (e) {}
     });
 
@@ -68,46 +73,46 @@ describe('end-to-end test', () => {
      * @param: {number} id
      * @returns: row verwijderd uit database (status: 200 ok)
      */
-        let id;
+    let id;
 
-        it('check if it responds with 200, if it deleted the object', async (done) => {
-            try {
-                await request.delete('/deleteVraag/' + id)
-                    .send({
-                        id: '111'
-                    })
-                    .expect(200)
-                    .then((res) => {
-                        done()
-                        console.log('deleted');
-                    });
-            } catch (e) {
-                if (e) console.log(e);
-                done(e)
-                done()
-            }
-        })
+    it('check if it responds with 200, if it deleted the object', async (done) => {
+        try {
+            await request.delete('/deleteVraag/' + id)
+                .send({
+                    id: '112'
+                })
+                .expect(200)
+                .then((res) => {
+                    done()
+                    console.log('Vraag deleted met id ' + id);
+                });
+        } catch (e) {
+            if (e) console.log(e);
+            done(e)
+            done()
+        }
+    })
 
-        /**
-         * [Delete een formulier zonder id]
-         * @param: niets
-         * @returns: error (status: 400 bad request)
-         */
-        it('check if it responds with 400 when sent without data', async (done) => {
-            try {
-                await request.delete('/deleteVraag/' + id)
-                    .send([])
-                    .expect(400)
-                    .then((res) => {
-                        console.log('Delete niet gelukt');
-                        done()
-                    });
-            } catch (e) {
-                if (e) console.log(e);
-                done(e)
-                done()
-            }
-        })
+    /**
+     * [Delete een formulier zonder id]
+     * @param: niets
+     * @returns: error (status: 400 bad request)
+     */
+    it('check if it responds with 400 when sent without data', async (done) => {
+        try {
+            await request.delete('/deleteVraag/' + id)
+                .send([])
+                .expect(400)
+                .then((res) => {
+                    console.log('Delete niet gelukt');
+                    done()
+                });
+        } catch (e) {
+            if (e) console.log(e);
+            done(e)
+            done()
+        }
+    })
 
     /**
      * [Update een formulier]
@@ -124,10 +129,14 @@ describe('end-to-end test', () => {
                     achternaam: "To",
                     email: "end",
                     bericht: "test",
-                    id: "55"
+                    id: "90"
                 })
-            expect(response.status).toBe(200);
-            done();
+                .then((res) => {
+                    console.log('Updated vraag ' + id);
+                    done()
+                })
+                .expect(response.status).toBe(200)
+                .done()
         } catch (error) {}
     });
 
@@ -138,9 +147,14 @@ describe('end-to-end test', () => {
      */
     it('updates een vraag zonder id', async (next) => {
         try {
-            const response = await request.get("/updateVraag/" + id);
-            expect(response.status).toBe(400);
-            next();
+            const response = await request
+            .get("/updateVraag/" + id)
+            .then((res) => {
+                console.log('Update niet gelukt')
+                done()
+            })
+            .expect(response.status).toBe(400)
+            .next()
         } catch (e) {}
     });
 });
