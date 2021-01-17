@@ -58,3 +58,8 @@ Alle opmerkelijke wijzigingen aan dit project zullen in dit bestand gedocumentee
   
 ### Changed
 - Tests verplaatst naar integration folder, zodat circli werkt
+
+## [1.1.4] - 2021-01-17
+
+ ### Added
+- End-to-end-test toegevoegd
